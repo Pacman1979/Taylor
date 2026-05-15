@@ -12,8 +12,8 @@
     --cream: #faf7f4;
     --blush: #e8d5cc;
     --rose: #c9a097;
-    --gold: #b89a7a;
-    --gold-light: #d4b896;
+    --gold: #c8a84b;
+    --gold-light: #e2c46a;
     --charcoal: #2c2825;
     --warm-grey: #7a6f69;
     --soft-white: #f5f0eb;
@@ -110,15 +110,7 @@
     padding: 80px 7% 80px 8%;
     position: relative;
   }
-  .hero-left::after {
-    content: '';
-    position: absolute;
-    top: 0; right: -40px; bottom: 0;
-    width: 80px;
-    background: linear-gradient(160deg, var(--soft-white) 0%, var(--blush) 100%);
-    clip-path: polygon(0 0, 0% 100%, 100% 100%);
-    z-index: 1;
-  }
+  .hero-left::after { display: none; }
   .hero-eyebrow {
     font-size: 0.72rem;
     letter-spacing: 0.2em;
@@ -293,25 +285,31 @@
   .pain-section .section-body { margin: 0 auto 3.5rem; text-align: left; }
   .pain-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
     gap: 1.5px;
     max-width: 1100px;
     margin: 0 auto;
     background: var(--blush);
     border: 1.5px solid var(--blush);
   }
+  @media (max-width: 780px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .pain-grid { grid-template-columns: 1fr; } }
   .pain-card {
     background: var(--cream);
     padding: 2.5rem 2rem;
     text-align: left;
     transition: background 0.25s;
+    display: flex;
+    flex-direction: column;
   }
   .pain-card:hover { background: var(--soft-white); }
   .pain-icon {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     display: block;
+    line-height: 1;
   }
+  .pain-icon svg { display: block; }
   .pain-card h3 {
     font-family: var(--font-display);
     font-size: 1.3rem;
@@ -992,8 +990,9 @@
   </div>
   <div class="hero-right">
     <!-- Use Taylor4.jpg (her guiding a participant) as the hero image -->
+    <!-- PLACEHOLDER: Replace src with Taylor4.jpg (Taylor guiding a participant) -->
     <img class="hero-img"
-      src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&auto=format&fit=crop&q=80"
+      src="images/Taylor4.jpg"
       alt="Taylor Valentino guiding a breathwork session"
       onerror="this.style.background='#c9a097';this.removeAttribute('src')">
     <div class="hero-overlay-text">
@@ -1018,32 +1017,44 @@
   <p class="section-body">You've tried the apps, the sleep hygiene, the deep breathing from YouTube. But the anxiety keeps creeping back. The exhaustion doesn't lift. Something's missing — and it's not more effort.</p>
   <div class="pain-grid">
     <div class="pain-card">
-      <span class="pain-icon">😮‍💨</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </span>
       <h3>"I'm constantly on edge"</h3>
       <p>Your nervous system has been in overdrive for so long it's forgotten what calm feels like. You're wired, tired, and can't seem to switch off — no matter how much you try to relax.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">😴</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
       <h3>"I can't sleep properly"</h3>
       <p>You lie awake, mind racing. Or you wake at 3am and can't get back. You're exhausted but your body won't let you rest. This is a dysregulated nervous system — and breathwork directly addresses it.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">🌫️</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </span>
       <h3>"I feel disconnected from myself"</h3>
       <p>You go through the motions but feel numb, flat, or like you're watching your own life from a distance. This dissociation is more common than you think — and it has a solution.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">💔</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </span>
       <h3>"I'm carrying things I haven't processed"</h3>
       <p>Old grief, stress, trauma — it lives in the body. Talk therapy helps the mind. Breathwork accesses what's stored deeper, creating the release your body has been waiting for.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">🔁</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      </span>
       <h3>"I keep reacting instead of responding"</h3>
       <p>Snapping at the kids. Spiralling after a hard conversation. You don't want to — but you can't seem to stop it. Nervous system regulation changes this pattern for good.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">🧘</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </span>
       <h3>"Meditation doesn't work for me"</h3>
       <p>You've tried sitting still. Your mind goes everywhere. Breathwork is active — it gives your body something to do — making it accessible even for the most anxious, restless minds.</p>
     </div>
@@ -1053,8 +1064,9 @@
 <!-- STORY SECTION -->
 <section class="story-section" id="story">
   <div class="story-img-side">
+    <!-- PLACEHOLDER: Replace src with Taylor3.jpg or Taylor10.jpg (Taylor meditating/practising) -->
     <img class="story-img"
-      src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=700&auto=format&fit=crop&q=80"
+      src="images/Taylor3.jpg"
       alt="Taylor Valentino"
       onerror="this.style.background='#e8d5cc'">
     <div class="story-img-overlay"></div>
@@ -1170,6 +1182,11 @@
   </div>
 </section>
 
+<!-- CLASS PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;max-height:420px;overflow:hidden;">
+  <img src="images/Taylor8.jpg" alt="Taylor leading a breathwork class" style="width:100%;height:420px;object-fit:cover;object-position:center;">
+  <img src="images/Taylor9.jpg" alt="Breathwork session setup with candles and mats" style="width:100%;height:420px;object-fit:cover;object-position:bottom;">
+</div>
 <!-- PROOF BAR -->
 <div class="proof-bar">
   <div class="proof-bar-inner">
@@ -1194,7 +1211,7 @@
 
 <!-- TESTIMONIALS -->
 <section class="testimonials-section" id="reviews">
-  <p class="section-eyebrow">Love Notes ❤️</p>
+  <p class="section-eyebrow">Love Notes</p>
   <h2 class="section-title">Real People. <em>Real Transformations.</em></h2>
   <p class="section-body">Don't just take Taylor's word for it — here's what people say the moment they leave the mat.</p>
   <div class="testimonials-grid">
@@ -1262,8 +1279,9 @@
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-img-side">
+    <!-- PLACEHOLDER: Replace with Taylor1.jpg (portrait/headshot) -->
     <img class="about-img"
-      src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=700&auto=format&fit=crop&q=80"
+      src="images/Taylor1.jpg"
       alt="Taylor Valentino"
       onerror="this.style.background='#3a3330'">
   </div>
