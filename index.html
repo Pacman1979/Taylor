@@ -643,7 +643,7 @@
     align-items: center;
     gap: 0.8rem;
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
+    color: var(--warm-grey);
   }
   .credential-dot {
     width: 6px; height: 6px;
@@ -1276,7 +1276,7 @@
   }
 
   // Smooth reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
+  const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
@@ -1289,7 +1289,7 @@
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+    cardObserver.observe(el);
   });
 </script>
 
@@ -1939,7 +1939,7 @@
     align-items: center;
     gap: 0.8rem;
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
+    color: var(--warm-grey);
   }
   .credential-dot {
     width: 6px; height: 6px;
@@ -2572,7 +2572,7 @@
   }
 
   // Smooth reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
+  const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
@@ -2585,7 +2585,7 @@
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+    cardObserver.observe(el);
   });
 </script>
 
