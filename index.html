@@ -3,1387 +3,1016 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Breath Therapy · Taylor Valentino · Gold Coast</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Studio Velox — Are You Losing Customers Online Without Knowing It?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lato:wght@300;400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <style>
-  :root {
-    --cream: #faf7f4;
-    --blush: #e8d5cc;
-    --rose: #c9a097;
-    --gold: #c8a84b;
-    --gold-light: #e2c46a;
-    --charcoal: #2c2825;
-    --warm-grey: #7a6f69;
-    --soft-white: #f5f0eb;
-    --deep-rose: #9e6e63;
-    --text: #2c2825;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-script: 'Great Vibes', cursive;
-    --font-body: 'Jost', sans-serif;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:   #0a1628;
+  --navy2:  #122040;
+  --gold:   #e8a020;
+  --gold2:  #f5b732;
+  --lime:   #c8f03a;
+  --red:    #c0392b;
+  --white:  #ffffff;
+  --offwhite: #f8f6f1;
+  --gray:   #6b7280;
+  --light:  #eef2f7;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Oswald', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--white); color: var(--navy); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.btn-gold {
+  display: inline-block; background: var(--gold); color: var(--navy);
+  font-family: var(--font-accent); font-size: 16px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; padding: 18px 40px;
+  border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(232,160,32,0.4);
+}
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,160,32,0.5); }
+.btn-outline {
+  display: inline-block; background: transparent; color: var(--gold);
+  font-family: var(--font-accent); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px;
+  border: 2px solid var(--gold); cursor: pointer; transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--gold); color: var(--navy); }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── ANNOUNCE BAR ── */
+.announce {
+  background: var(--gold); color: var(--navy);
+  padding: 11px 0; font-family: var(--font-accent); font-size: 14px; letter-spacing: 0.04em;
+  overflow: hidden; white-space: nowrap;
+}
+.announce strong { color: var(--navy); font-weight: 900; }
+.announce-track {
+  display: inline-block;
+  animation: ticker 38s linear infinite;
+  padding-left: 100%;
+}
+.announce-track:hover { animation-play-state: paused; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
 
-  html { scroll-behavior: smooth; }
+/* ── NAV ── */
+nav {
+  background: var(--navy); padding: 16px 0;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo { font-family: var(--font-accent); font-size: 28px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; }
+.logo span { color: var(--gold); }
+.nav-contact { display: flex; align-items: center; gap: 12px; }
+.nav-phone { font-family: var(--font-accent); color: var(--gold2); font-size: 15px; letter-spacing: 0.04em; }
+.nav-email { font-family: var(--font-accent); color: var(--gold2); font-size: 15px; letter-spacing: 0.04em; }
+.nav-divider { color: rgba(232,160,32,0.3); font-size: 18px; }
+.nav-btn { font-size: 14px; padding: 12px 28px; }
 
-  body {
-    font-family: var(--font-body);
-    background: var(--cream);
-    color: var(--text);
-    font-weight: 300;
-    overflow-x: hidden;
-  }
+/* ── HERO ── */
+.hero { background: var(--navy); color: var(--white); padding: 36px 0 40px; position: relative; overflow: hidden; }
+.hero::after {
+  content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(232,160,32,0.07));
+  pointer-events: none;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+.eyebrow {
+  font-family: var(--font-accent); font-size: 12px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ''; display: block; width: 36px; height: 2px; background: var(--gold); flex-shrink: 0; }
+.hero h1 {
+  font-family: var(--font-head); font-size: clamp(30px, 3.8vw, 48px);
+  font-weight: 900; line-height: 1.05; margin-bottom: 16px; color: var(--white);
+}
+.hero h1 em { font-style: normal; color: var(--gold); display: block; white-space: nowrap; }
+.agitate { font-size: 15px; line-height: 1.6; color: #b0bfd4; margin-bottom: 8px; max-width: 560px; }
+.agitate strong { color: var(--white); }
+.agitate .pain { color: #ff8a80; font-weight: 700; }
+.stats-row {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin: 16px 0; padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.stat-num { font-family: var(--font-accent); font-size: 24px; font-weight: 600; color: var(--gold); line-height: 1; }
+.stat-lbl { font-size: 10px; color: #6a7f9a; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+.cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+.hero-guarantee { font-size: 12px; color: #6a7f9a; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+.hero-guarantee::before { content: '✓'; color: var(--lime); font-weight: 700; }
 
-  /* ─── ANNOUNCEMENT BAR ─── */
-  .announcement {
-    background: var(--charcoal);
-    color: var(--gold-light);
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-  .announcement a { color: var(--gold-light); text-decoration: underline; }
+/* FORM CARD */
+.form-card {
+  background: var(--white); color: var(--navy); padding: 28px 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45); position: relative;
+}
+.form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--gold); }
+.form-badge {
+  background: var(--red); color: var(--white); font-family: var(--font-accent);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 12px; display: inline-block; margin-bottom: 10px;
+}
+.form-card h3 { font-family: var(--font-head); font-size: 19px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; color: var(--navy); }
+.form-card > p { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 14px; }
+.field { margin-bottom: 10px; }
+.field input, .field select {
+  width: 100%; background: var(--offwhite); border: 2px solid #dde2ea;
+  color: var(--navy); font-family: var(--font-body); font-size: 14px;
+  padding: 13px 16px; outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+.field input:focus, .field select:focus { border-color: var(--gold); }
+.field input::placeholder { color: #bbb; }
+.field select option { background: #fff; color: var(--navy); }
+.form-btn {
+  width: 100%; background: var(--gold); color: var(--navy);
+  font-family: var(--font-accent); font-size: 16px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; border: none;
+  padding: 18px; cursor: pointer; transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(232,160,32,0.4);
+}
+.form-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+.form-fine { font-size: 11px; color: #bbb; text-align: center; margin-top: 10px; }
+.form-success { display: none; text-align: center; padding: 16px 0; }
+.form-success .tick {
+  width: 56px; height: 56px; background: #e8f5e9; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin: 0 auto 14px;
+}
+.form-success h4 { font-family: var(--font-head); font-size: 19px; margin-bottom: 8px; color: var(--navy); }
+.form-success p { font-size: 13px; color: var(--gray); }
 
-  /* ─── NAV ─── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(250,247,244,0.96);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--blush);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    height: 60px;
-  }
-  .nav-logo {
-    font-family: var(--font-script);
-    font-size: 1.9rem;
-    color: var(--charcoal);
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 2.2rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--deep-rose); }
-  .nav-cta {
-    background: var(--charcoal);
-    color: var(--cream) !important;
-    padding: 10px 22px;
-    border-radius: 2px;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.14em;
-  }
-  .nav-cta:hover { background: var(--deep-rose); color: var(--cream) !important; }
+/* PROOF BAR */
+.proof-bar { background: var(--offwhite); border-top: 3px solid var(--gold); padding: 22px 0; }
+.proof-inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center; }
+.proof-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--navy); }
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    overflow: hidden;
-    padding: 0 !important;
-  }
-  .hero-left {
-    background: linear-gradient(160deg, var(--soft-white) 0%, var(--blush) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 40px 7% 40px 8%;
-    position: relative;
-  }
-  .hero-left::after { display: none; }
-  .hero-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--deep-rose);
-    margin-bottom: 1.4rem;
-    font-weight: 400;
-  }
-  .hero-h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.6rem, 4vw, 3.8rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--charcoal);
-    margin-bottom: 1.6rem;
-  }
-  .hero-h1 em {
-    font-style: italic;
-    color: var(--deep-rose);
-  }
-  .hero-sub {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--warm-grey);
-    max-width: 440px;
-    margin-bottom: 2.4rem;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .btn-primary {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 15px 32px;
-    border: none;
-    border-radius: 2px;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.25s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--deep-rose); transform: translateY(-1px); }
-  .btn-secondary {
-    color: var(--warm-grey);
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-bottom: 1px solid var(--rose);
-    padding-bottom: 2px;
-    transition: color 0.2s;
-  }
-  .btn-secondary:hover { color: var(--deep-rose); }
+/* PAIN SECTION */
+.pain-section { background: var(--navy); color: var(--white); padding: 80px 0; }
+.pain-section h2 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 44px); font-weight: 900; line-height: 1.15; margin-bottom: 14px; }
+.pain-section h2 em { font-style: normal; color: var(--gold); }
+.pain-intro { font-size: 17px; color: #b0bfd4; max-width: 620px; line-height: 1.7; margin-bottom: 48px; }
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.05); }
+.pain-card {
+  background: var(--navy2); padding: 34px 30px;
+  border-left: 4px solid transparent; transition: border-color 0.2s;
+}
+.pain-card:hover { border-left-color: var(--gold); }
+.pain-icon { font-size: 30px; margin-bottom: 14px; }
+.pain-title { font-family: var(--font-accent); font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.pain-desc { font-size: 14px; color: #8fa0b8; line-height: 1.7; }
 
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--blush);
-  }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--charcoal);
-    display: block;
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-    margin-top: 4px;
-    display: block;
-  }
+/* VIDEO SECTION */
+.video-section { background: var(--offwhite); padding: 80px 0; }
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.video-ph {
+  background: var(--navy); aspect-ratio: 16/9; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; cursor: pointer;
+  position: relative; overflow: hidden; box-shadow: 0 16px 48px rgba(10,22,40,0.25);
+}
+.video-ph::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(232,160,32,0.12), transparent); }
+.play-btn {
+  width: 70px; height: 70px; background: var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: var(--navy); position: relative; z-index: 1;
+  box-shadow: 0 0 0 16px rgba(232,160,32,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.video-ph:hover .play-btn { transform: scale(1.1); box-shadow: 0 0 0 24px rgba(232,160,32,0.1); }
+.vid-label { font-family: var(--font-accent); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 16px; position: relative; z-index: 1; }
+.sec-label { font-family: var(--font-accent); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.sec-title { font-family: var(--font-head); font-size: clamp(24px, 3vw, 38px); font-weight: 900; line-height: 1.15; color: var(--navy); margin-bottom: 18px; }
+.sec-title em { font-style: normal; color: var(--gold); }
+.body-copy { font-size: 16px; line-height: 1.8; color: #4a5568; margin-bottom: 20px; }
+.check-list { list-style: none; margin-bottom: 32px; }
+.check-list li {
+  font-size: 15px; color: var(--navy); padding: 9px 0;
+  border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 12px; font-weight: 700;
+}
+.check-list li::before { content: '✓'; color: #22c55e; font-size: 15px; flex-shrink: 0; }
 
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-    background: var(--charcoal);
-  }
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 90%;
-    opacity: 0.88;
-    display: block;
-  }
-  /* ─── TAGLINE BAR ─── */
-  .tagline-bar {
-    background: var(--charcoal);
-    color: var(--gold-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    padding: 20px 5%;
-    flex-wrap: wrap;
-  }
-  .tagline-item {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .tagline-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--rose);
-    display: inline-block;
-  }
+/* BEFORE / AFTER SHOWCASE */
+.showcase { background: var(--navy); padding: 80px 0; }
+.showcase .sec-title { color: var(--white); }
+.showcase .sec-label { color: var(--gold); }
+.showcase-intro { font-size: 17px; color: #b0bfd4; max-width: 640px; line-height: 1.7; margin-bottom: 52px; }
+.showcase-grid { display: flex; flex-direction: column; gap: 64px; }
+.showcase-item { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; position: relative; }
+.showcase-item::before {
+  content: 'VS';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gold); color: var(--navy);
+  font-family: var(--font-accent); font-size: 14px; font-weight: 600;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.showcase-panel { position: relative; overflow: hidden; }
+.showcase-label {
+  position: absolute; top: 16px; left: 16px;
+  font-family: var(--font-accent); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; z-index: 2;
+}
+.label-before { background: var(--red); color: var(--white); }
+.label-after  { background: var(--lime); color: var(--navy); }
+.showcase-video {
+  width: 100%; aspect-ratio: 16/9;
+  background: #0d1f35;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  cursor: pointer; position: relative;
+  border: 2px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s;
+}
+.showcase-video:hover { border-color: var(--gold); }
+.showcase-video iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: none;
+}
+.sv-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  width: 100%; height: 100%; gap: 12px;
+}
+.sv-play {
+  width: 56px; height: 56px; background: rgba(232,160,32,0.15);
+  border: 2px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--gold);
+  transition: background 0.2s;
+}
+.showcase-video:hover .sv-play { background: var(--gold); color: var(--navy); }
+.sv-label {
+  font-family: var(--font-accent); font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); text-align: center; padding: 0 16px;
+}
+.showcase-meta {
+  background: rgba(255,255,255,0.04);
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.showcase-biz { font-family: var(--font-accent); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.showcase-type { font-size: 12px; color: #5a7090; }
+.showcase-cta { text-align: center; margin-top: 52px; }
+.showcase-cta p { font-family: var(--font-body); font-size: 15px; color: #7a8fa8; margin-bottom: 20px; }
 
-  /* ─── SECTIONS ─── */
-  section { padding: 90px 5%; }
+@media (max-width: 900px) {
+  .showcase-item { grid-template-columns: 1fr; gap: 32px; }
+  .showcase-item::before { top: calc(50% - 16px); }
+}
 
-  .section-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--deep-rose);
-    margin-bottom: 1rem;
-    font-weight: 400;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.2;
-    color: var(--charcoal);
-    margin-bottom: 1.4rem;
-  }
-  .section-title em { font-style: italic; color: var(--deep-rose); }
-  .section-body {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--warm-grey);
-    max-width: 680px;
-  }
+/* BENEFITS */
+.benefits { background: var(--white); padding: 80px 0; }
+.sec-sub { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
+.ben-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.ben-card {
+  border: 2px solid #e8ecf3; padding: 34px 26px; position: relative;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.ben-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.ben-num { font-family: var(--font-accent); font-size: 48px; font-weight: 600; color: #e8ecf3; line-height: 1; position: absolute; top: 20px; right: 20px; }
+.ben-icon { font-size: 34px; margin-bottom: 14px; }
+.ben-title { font-family: var(--font-accent); font-size: 16px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
+.ben-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
 
-  /* ─── PAIN POINTS ─── */
-  .pain-section {
-    background: var(--soft-white);
-    text-align: center;
-  }
-  .pain-section .section-title { margin: 0 auto 1rem; }
-  .pain-section .section-body { margin: 0 auto 3.5rem; text-align: left; }
-  .pain-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 1.5px;
-    max-width: 1100px;
-    margin: 0 auto;
-    background: var(--blush);
-    border: 1.5px solid var(--blush);
-  }
-  @media (max-width: 780px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .pain-grid { grid-template-columns: 1fr; } }
-  .pain-card {
-    background: var(--cream);
-    padding: 2.5rem 2rem;
-    text-align: left;
-    transition: background 0.25s;
-    display: flex;
-    flex-direction: column;
-  }
-  .pain-card:hover { background: var(--soft-white); }
-  .pain-icon {
-    margin-bottom: 1.2rem;
-    display: block;
-    line-height: 1;
-  }
-  .pain-icon svg { display: block; }
-  .pain-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--charcoal);
-    margin-bottom: 0.7rem;
-    font-style: italic;
-  }
-  .pain-card p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--warm-grey);
-  }
+/* PROCESS */
+.process { background: var(--navy); color: var(--white); padding: 80px 0; }
+.process .sec-title { color: var(--white); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; position: relative; }
+.steps::before {
+  content: ''; position: absolute; top: 34px; left: 12.5%; right: 12.5%; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 8px, transparent 8px, transparent 20px);
+}
+.step-item { text-align: center; padding: 0 12px; }
+.step-circle {
+  width: 68px; height: 68px; border: 3px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+  font-family: var(--font-accent); font-size: 20px; font-weight: 600; color: var(--gold);
+  background: var(--navy); position: relative; z-index: 1;
+}
+.step-title { font-family: var(--font-accent); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--white); margin-bottom: 8px; }
+.step-desc { font-size: 13px; color: #7a8fa8; line-height: 1.6; }
 
-  /* ─── STORY SECTION ─── */
-  .story-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    align-items: stretch;
-    padding: 0;
-  }
-  .story-img-side {
-    position: relative;
-    overflow: hidden;
-    min-height: 580px;
-  }
-  .story-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .story-img-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent 60%, var(--cream) 100%);
-  }
-  .story-text-side {
-    padding: 80px 7% 80px 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--cream);
-  }
-  .story-pull {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--deep-rose);
-    line-height: 1.5;
-    margin-bottom: 1.8rem;
-    border-left: 3px solid var(--rose);
-    padding-left: 1.5rem;
-  }
-  .story-text-side p {
-    font-size: 0.97rem;
-    line-height: 1.85;
-    color: var(--warm-grey);
-    margin-bottom: 1.2rem;
-  }
-  .story-text-side p strong {
-    color: var(--charcoal);
-    font-weight: 500;
-  }
+/* TESTIMONIALS */
+.testimonials { background: var(--offwhite); padding: 80px 0; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.testi-card {
+  background: var(--white); padding: 34px 26px;
+  border-bottom: 4px solid var(--gold); box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.stars { color: var(--gold); font-size: 17px; letter-spacing: 2px; margin-bottom: 14px; }
+.testi-quote { font-family: var(--font-head); font-size: 16px; font-style: italic; line-height: 1.65; color: var(--navy); margin-bottom: 20px; }
+.testi-result { background: #e8f5e9; border-left: 3px solid #22c55e; padding: 9px 13px; font-size: 13px; font-weight: 700; color: #166534; margin-bottom: 18px; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 42px; height: 42px; background: var(--navy); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-accent); font-size: 15px; font-weight: 600; color: var(--gold); flex-shrink: 0;
+}
+.testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+.testi-biz { font-size: 12px; color: var(--gray); }
+.vid-testi-note { text-align: center; margin-top: 32px; padding: 22px; background: var(--navy); color: var(--white); }
+.vid-testi-note p { font-size: 14px; color: #7a8fa8; }
+.vid-testi-note strong { color: var(--gold); }
 
-  /* ─── WHAT SECTION ─── */
-  .what-section { background: var(--charcoal); color: var(--cream); }
-  .what-section .section-eyebrow { color: var(--gold-light); }
-  .what-section .section-title { color: var(--cream); }
-  .what-section .section-title em { color: var(--gold-light); }
-  .what-section .section-body { color: rgba(255,255,255,0.65); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    margin-top: 3.5rem;
-    background: rgba(255,255,255,0.08);
-  }
-  .service-card {
-    background: var(--charcoal);
-    padding: 3rem 2.5rem;
-    border-top: 2px solid transparent;
-    transition: border-color 0.3s, background 0.3s;
-    position: relative;
-  }
-  .service-card:hover {
-    border-top-color: var(--gold);
-    background: rgba(255,255,255,0.04);
-  }
-  .service-num {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.1);
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-  }
-  .service-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.55rem;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 0.8rem;
-    font-style: italic;
-  }
-  .service-price {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    display: block;
-  }
-  .service-card p {
-    font-size: 0.9rem;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 1.5rem;
-  }
-  .service-link {
-    color: var(--gold-light);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 2px;
-    transition: color 0.2s;
-  }
-  .service-link:hover { color: var(--cream); }
+/* TRUST */
+.trust { background: var(--white); padding: 80px 0; }
+.trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.trust-list { list-style: none; }
+.trust-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid #e8ecf3; }
+.trust-item:last-child { border-bottom: none; }
+.trust-num { font-family: var(--font-accent); font-size: 26px; font-weight: 600; color: var(--gold); flex-shrink: 0; width: 40px; line-height: 1; padding-top: 3px; }
+.trust-ttl { font-weight: 700; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+.trust-dsc { font-size: 14px; color: var(--gray); line-height: 1.6; }
+.creds { background: var(--navy); color: var(--white); padding: 44px 38px; }
+.creds-label { font-family: var(--font-accent); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.cred-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 18px; }
+.cred-n { font-family: var(--font-head); font-size: 46px; font-weight: 900; color: var(--gold); line-height: 1; }
+.cred-l { font-size: 14px; color: #7a8fa8; }
+.cred-div { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 16px 0; }
+.guarantee {
+  background: rgba(232,160,32,0.1); border: 2px solid var(--gold); padding: 22px; margin-top: 24px;
+}
+.guarantee h4 { font-family: var(--font-accent); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 8px; }
+.guarantee p { font-size: 14px; color: #b0bfd4; line-height: 1.6; }
 
-  /* ─── LOCATIONS ─── */
-  .locations-section { background: var(--soft-white); }
-  .locations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .location-card {
-    background: var(--cream);
-    border: 1px solid var(--blush);
-    padding: 2.5rem 2rem;
-    text-align: center;
-  }
-  .location-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .location-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-style: italic;
-    color: var(--charcoal);
-    margin-bottom: 0.5rem;
-  }
-  .location-card p {
-    font-size: 0.88rem;
-    color: var(--warm-grey);
-    line-height: 1.65;
-  }
+/* FINAL CTA */
+.final-cta { background: var(--gold); padding: 80px 0; }
+.final-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+.urgency-tag {
+  display: inline-block; background: var(--red); color: var(--white);
+  font-family: var(--font-accent); font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 6px 18px; margin-bottom: 22px;
+}
+.final-cta h2 { font-family: var(--font-head); font-size: clamp(26px, 4vw, 46px); font-weight: 900; color: var(--navy); line-height: 1.1; margin-bottom: 14px; }
+.final-cta > .final-inner > p { font-size: 18px; color: rgba(10,22,40,0.72); line-height: 1.65; margin-bottom: 34px; }
+.final-form { display: flex; gap: 10px; max-width: 520px; margin: 0 auto 12px; }
+.final-form input {
+  flex: 1; background: var(--white); border: 2px solid transparent;
+  font-family: var(--font-body); font-size: 15px; padding: 18px 20px;
+  outline: none; color: var(--navy);
+}
+.final-form input::placeholder { color: #999; }
+.final-form input:focus { border-color: var(--navy); }
+.final-form button {
+  background: var(--navy); color: var(--white);
+  font-family: var(--font-accent); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: none; padding: 18px 28px; cursor: pointer; white-space: nowrap; transition: background 0.2s;
+}
+.final-form button:hover { background: var(--navy2); }
+.final-small { font-size: 13px; color: rgba(10,22,40,0.55); }
+.final-success { display: none; }
+.final-success h3 { font-family: var(--font-head); font-size: 28px; color: var(--navy); margin-bottom: 8px; }
+.final-success p { font-size: 16px; color: rgba(10,22,40,0.7); }
 
-  /* ─── TESTIMONIALS ─── */
-  .testimonials-section { background: var(--cream); }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .testimonial-card {
-    background: var(--soft-white);
-    padding: 2.5rem 2rem;
-    border-bottom: 3px solid var(--rose);
-    position: relative;
-  }
-  .testimonial-stars {
-    color: var(--gold);
-    font-size: 1rem;
-    letter-spacing: 2px;
-    margin-bottom: 1.2rem;
-  }
-  .testimonial-quote {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-style: italic;
-    line-height: 1.75;
-    color: var(--charcoal);
-    margin-bottom: 1.5rem;
-  }
-  .testimonial-author {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-  }
-  .testimonial-tag {
-    font-size: 0.7rem;
-    color: var(--deep-rose);
-    background: var(--blush);
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-top: 6px;
-  }
+/* VELOX DEFINITION */
+.velox-definition {
+  background: var(--navy);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.velox-definition::before {
+  content: 'VELOX';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-head);
+  font-size: clamp(100px, 18vw, 220px);
+  font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.velox-def-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.velox-def-word {
+  font-family: var(--font-head);
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.velox-def-word span { color: var(--gold); }
+.velox-def-phonetic {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-style: italic;
+  color: #4a6080;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+.velox-def-line {
+  width: 60px; height: 2px;
+  background: var(--gold);
+  margin: 0 auto 28px;
+}
+.velox-def-pos {
+  font-family: var(--font-accent);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.velox-def-meaning {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+.velox-def-sub {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #5a7090;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.velox-def-sub em { color: #8aaac8; font-style: normal; }
 
-  /* ─── LEAD MAGNET ─── */
-  .lead-section {
-    background: linear-gradient(135deg, var(--blush) 0%, var(--soft-white) 100%);
-    text-align: center;
-    padding: 100px 5%;
-  }
-  .lead-section .section-title { margin: 0 auto 1rem; }
-  .lead-section .section-body { margin: 0 auto 2.5rem; text-align: center; }
-  .lead-badge {
-    display: inline-block;
-    background: var(--deep-rose);
-    color: white;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-  }
-  .lead-form {
-    display: flex;
-    gap: 0;
-    max-width: 460px;
-    margin: 0 auto 1rem;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-  }
-  .lead-form input {
-    flex: 1;
-    padding: 16px 20px;
-    border: 1.5px solid var(--blush);
-    border-right: none;
-    background: white;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--text);
-    outline: none;
-    border-radius: 2px 0 0 2px;
-  }
-  .lead-form input::placeholder { color: var(--warm-grey); }
-  .lead-form button {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 16px 24px;
-    border: none;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 0 2px 2px 0;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-  .lead-form button:hover { background: var(--deep-rose); }
-  .lead-sub {
-    font-size: 0.78rem;
-    color: var(--warm-grey);
-  }
-  .lead-bullets {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2.5rem;
-  }
-  .lead-bullet {
-    font-size: 0.8rem;
-    color: var(--warm-grey);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .lead-bullet::before {
-    content: '✓';
-    color: var(--deep-rose);
-    font-weight: 600;
-  }
+/* FOOTER */
+footer { background: var(--navy2); color: #7a8fa8; padding: 36px 0; }
+.foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.foot-logo { font-family: var(--font-accent); font-size: 22px; color: var(--white); }
+.foot-logo span { color: var(--gold); }
+.foot-links { display: flex; gap: 24px; }
+.foot-links a { font-size: 13px; color: #7a8fa8; transition: color 0.2s; }
+.foot-links a:hover { color: var(--gold); }
+.foot-copy { font-size: 13px; }
 
-  /* ─── ABOUT ─── */
-  .about-section {
-    background: var(--charcoal);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    padding: 0;
-    align-items: stretch;
-  }
-  .about-img-side {
-    position: relative;
-    min-height: 520px;
-    overflow: hidden;
-  }
-  .about-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    opacity: 0.75;
-  }
-  .about-text-side {
-    padding: 80px 7% 80px 6%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .about-section .section-eyebrow { color: var(--gold-light); }
-  .about-section .section-title { color: var(--cream); }
-  .about-section .section-title em { color: var(--gold-light); }
-  .about-text-side p {
-    font-size: 0.95rem;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 1.2rem;
-  }
-  .about-text-side p strong { color: var(--gold-light); font-weight: 400; }
-  .about-credentials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 2rem;
-  }
-  .credential {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.85rem;
-    color: var(--warm-grey);
-  }
-  .credential-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
+/* ANIMATE */
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+.anim { opacity: 0; }
+.anim.visible { animation: fadeUp 0.7s ease forwards; }
+.d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.2s; }
+.d3 { animation-delay: 0.3s; } .d4 { animation-delay: 0.4s; }
 
-  /* ─── WHY SECTION ─── */
-  .why-section { background: var(--soft-white); }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-  }
-  .why-item {
-    padding: 2rem 1.5rem;
-    border-top: 2px solid var(--blush);
-    transition: border-color 0.3s;
-  }
-  .why-item:hover { border-top-color: var(--rose); }
-  .why-num {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--blush);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .why-item h3 {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--charcoal);
-    margin-bottom: 0.7rem;
-  }
-  .why-item p {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: var(--warm-grey);
-  }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  /* Layout */
+  .hero-inner, .video-grid, .trust-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pain-grid, .ben-grid, .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .steps::before { display: none; }
+  .final-form { flex-direction: column; }
+  .proof-inner { gap: 14px; justify-content: flex-start; overflow-x: auto; padding: 0 16px; flex-wrap: nowrap; }
+  .proof-item { flex-shrink: 0; }
+  .stats-row { gap: 16px; flex-wrap: wrap; }
+  .nav-contact { display: none; }
+  .cta-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .btn-gold, .btn-outline { width: 100%; text-align: center; padding: 16px 20px; }
 
-  /* ─── EVENTS / UPCOMING ─── */
-  .events-section { background: var(--cream); }
-  .events-list {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--blush);
-    max-width: 800px;
-  }
-  .event-row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem 2.5rem;
-    border-bottom: 1px solid var(--blush);
-    transition: background 0.2s;
-  }
-  .event-row:last-child { border-bottom: none; }
-  .event-row:hover { background: var(--blush); }
-  .event-date {
-    text-align: center;
-    min-width: 60px;
-  }
-  .event-date-num {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--deep-rose);
-    line-height: 1;
-    display: block;
-  }
-  .event-date-month {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-  }
-  .event-info h4 {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--charcoal);
-    margin-bottom: 0.3rem;
-  }
-  .event-info p {
-    font-size: 0.82rem;
-    color: var(--warm-grey);
-  }
-  .event-price {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--charcoal);
-    text-align: right;
-  }
-  .event-price span {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-    font-weight: 300;
-  }
-  .events-cta-wrap { margin-top: 2.5rem; }
+  /* Typography */
+  .hero h1 { font-size: clamp(28px, 7vw, 42px); }
+  .agitate { font-size: 15px; }
+  .sec-title { font-size: clamp(22px, 6vw, 34px); }
+  .section-title { font-size: clamp(22px, 6vw, 34px); }
 
-  /* ─── SOCIAL PROOF BAR ─── */
-  .proof-bar {
-    background: var(--blush);
-    padding: 50px 5%;
-    text-align: center;
-  }
-  .proof-bar-inner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
-    flex-wrap: wrap;
-  }
-  .proof-item { text-align: center; }
-  .proof-num {
-    font-family: var(--font-display);
-    font-size: 2.8rem;
-    font-weight: 300;
-    color: var(--charcoal);
-    line-height: 1;
-    display: block;
-  }
-  .proof-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--warm-grey);
-    margin-top: 5px;
-    display: block;
-  }
+  /* Sections */
+  .hero { padding: 40px 0 48px; }
+  .section, .pain-section, .video-section, .benefits,
+  .process, .testimonials, .trust, .showcase { padding: 52px 0; }
+  .container { padding: 0 18px; }
+  .final-cta { padding: 52px 0; }
+  .velox-definition { padding: 52px 0; }
 
-  /* ─── CONTACT ─── */
-  .contact-section {
-    background: var(--soft-white);
-    text-align: center;
-  }
-  .contact-section .section-title { margin: 0 auto 1rem; }
-  .contact-section .section-body { margin: 0 auto 2.5rem; text-align: center; }
-  .contact-form {
-    max-width: 560px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .contact-form input,
-  .contact-form textarea,
-  .contact-form select {
-    width: 100%;
-    padding: 14px 18px;
-    border: 1.5px solid var(--blush);
-    background: white;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--text);
-    outline: none;
-    border-radius: 2px;
-    transition: border-color 0.2s;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--rose); }
-  .contact-form textarea { min-height: 120px; resize: vertical; }
-  .contact-form button {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 16px;
-    border: none;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.2s;
-  }
-  .contact-form button:hover { background: var(--deep-rose); }
-  .contact-note {
-    font-size: 0.78rem;
-    color: var(--warm-grey);
-    margin-top: 0.5rem;
-  }
+  /* Form card */
+  .form-card { padding: 28px 22px; }
+  .hero-form-card { padding: 28px 22px; }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--charcoal);
-    color: rgba(255,255,255,0.5);
-    padding: 60px 5% 30px;
-  }
-  .footer-inner {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-  .footer-brand-name {
-    font-family: var(--font-script);
-    font-size: 2rem;
-    color: var(--cream);
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .footer-tagline {
-    font-size: 0.82rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.45);
-    max-width: 280px;
-  }
-  .footer-col h4 {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 1.2rem;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 0.6rem; }
-  .footer-col ul li a {
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s;
-  }
-  .footer-col ul li a:hover { color: var(--gold-light); }
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
-  }
-  .footer-note {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.25);
-  }
+  /* Stats */
+  .stat-num { font-size: 24px; }
+  .stat-lbl { font-size: 10px; }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero-h1 { animation: fadeUp 0.7s 0.1s ease both; }
-  .hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
-  .hero-ctas { animation: fadeUp 0.7s 0.3s ease both; }
-  .hero-stats { animation: fadeUp 0.7s 0.4s ease both; }
+  /* Process */
+  .step-circle { width: 56px; height: 56px; font-size: 17px; }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    /* Hero */
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 40px 6% 32px; }
-    .hero-left::after { display: none; }
-    .hero-h1 { font-size: 2.2rem; }
-    .hero-sub { font-size: 0.95rem; }
-    .hero-right { min-height: 260px; max-height: 320px; }
-    .hero-stats { gap: 1.5rem; }
-    .stat-num { font-size: 1.5rem; }
+  /* Trust */
+  .creds { padding: 32px 24px; }
+  .cred-n { font-size: 36px; }
 
-    /* Nav */
-    .nav-links { display: none; }
-    nav { padding: 0 4%; height: 60px; }
-    .nav-logo { font-size: 1.5rem; }
+  /* Showcase */
+  .showcase-item { grid-template-columns: 1fr; gap: 24px; }
+  .showcase-item::before { display: none; }
 
-    /* Sections */
-    section { padding: 60px 5%; }
-    .section-title { font-size: 1.8rem; }
+  /* Footer */
+  .foot-inner { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  .foot-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
 
-    /* Pain grid */
-    .pain-grid { grid-template-columns: 1fr; }
+  /* Velox definition */
+  .velox-def-word { font-size: clamp(48px, 14vw, 80px); }
+  .velox-def-meaning { font-size: clamp(18px, 5vw, 26px); }
 
-    /* Story */
-    .story-section { grid-template-columns: 1fr; }
-    .story-img-side { min-height: 260px; }
-    .story-text-side { padding: 40px 6%; }
-    .story-pull { font-size: 1.2rem; }
+  /* Nav */
+  nav { padding: 14px 0; }
+  .logo { font-size: 22px; }
+  .nav-btn { font-size: 13px; padding: 10px 18px; }
+}
 
-    /* Services */
-    .services-grid { grid-template-columns: 1fr; }
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; gap: 24px; }
+  .ben-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(26px, 8vw, 36px); }
+  .proof-inner { gap: 10px; }
+  .announce-track { font-size: 13px; }
+}
 
-    /* Events */
-    .event-row { grid-template-columns: auto 1fr; gap: 1rem; padding: 1.5rem; }
-    .event-price { display: none; }
-
-    /* Testimonials */
-    .testimonials-grid { grid-template-columns: 1fr; }
-
-    /* About */
-    .about-section { grid-template-columns: 1fr; }
-    .about-img-side { min-height: 260px; }
-    .about-text-side { padding: 40px 6%; }
-
-    /* Why grid */
-    .why-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-    /* Locations */
-    .locations-grid { grid-template-columns: 1fr; }
-
-    /* Contact form */
-    .form-row { grid-template-columns: 1fr; }
-    .lead-form { flex-direction: column; }
-    .lead-form input { border-right: 1.5px solid var(--blush); border-bottom: none; border-radius: 2px 2px 0 0; }
-    .lead-form button { border-radius: 0 0 2px 2px; }
-
-    /* Footer */
-    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .proof-bar-inner { gap: 2rem; }
-
-    /* Tagline bar */
-    .tagline-bar { gap: 1rem; padding: 16px 5%; }
-    .tagline-item { font-size: 0.65rem; }
-  }
-
-  @media (max-width: 480px) {
-    .hero-h1 { font-size: 1.9rem; }
-    .hero-ctas { flex-direction: column; align-items: flex-start; }
-    .btn-primary { width: 100%; text-align: center; }
-    .why-grid { grid-template-columns: 1fr; }
-    .hero-stats { flex-wrap: wrap; gap: 1rem; }
-  }
+/* NO-WEBSITE TOGGLE */
+.form-toggle {
+  display: flex; background: #eef2f7; border-radius: 0;
+  margin-bottom: 20px; overflow: hidden;
+}
+.toggle-btn {
+  flex: 1; padding: 10px 8px; border: none; background: transparent;
+  font-family: var(--font-accent); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+  color: #8a9ab0; transition: all 0.2s; line-height: 1.3; text-align: center;
+}
+.toggle-btn.active { background: var(--navy); color: var(--gold); }
+.form-panel { display: none; }
+.form-panel.active { display: block; }
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT -->
-<div class="announcement">
-  🌿 Now taking bookings for August &amp; September events on the Gold Coast &amp; Melbourne &nbsp;·&nbsp; <a href="#events">View Upcoming Sessions →</a>
+<!-- ANNOUNCE BAR with scrolling ticker -->
+<div class="announce">
+  <span class="announce-track">
+    🚀 <strong>24-HOUR TURNAROUND:</strong> Submit your details today and receive your free website concept or audit <strong>within 24 hours.</strong> No catch. No obligation. Just results. &nbsp;—&nbsp; <strong onclick="goToAudit()" style="cursor:pointer;text-decoration:underline;">Claim yours now →</strong>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    🚀 <strong>24-HOUR TURNAROUND:</strong> Submit your details today and receive your free website concept or audit <strong>within 24 hours.</strong> No catch. No obligation. Just results. &nbsp;—&nbsp; <strong onclick="goToAudit()" style="cursor:pointer;text-decoration:underline;">Claim yours now →</strong>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">The Breath Therapy</a>
-  <ul class="nav-links">
-    <li><a href="#story">Taylor's Story</a></li>
-    <li><a href="#services">Sessions</a></li>
-    <li><a href="#events">Upcoming Events</a></li>
-    <li><a href="#reviews">Love Notes</a></li>
-    <li><a href="https://lu.ma/marchapril" target="_blank" class="nav-cta">Book Now</a></li>
-  </ul>
+  <div class="container nav-inner">
+    <div class="logo">STUD<span style="color:var(--gold)">IO</span> <span style="color:var(--gold)">VE</span>LOX<span>.</span></div>
+    <div class="nav-contact">
+      <span class="nav-phone">📞 <a href="tel:0422777865" style="color:inherit">0422 777 865</a></span>
+      <span class="nav-divider">|</span>
+      <span class="nav-email">✉️ <a href="mailto:phil@studiovelox.com" style="color:inherit">phil@studiovelox.com</a></span>
+    </div>
+    <button class="btn-gold nav-btn" onclick="goToAudit()">Get My Free Audit →</button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ JD Points 1 + 2 + 6 (Problem Headline, Agitation, Lead Magnet above fold) -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Gold Coast · Melbourne · Breathwork Facilitator &amp; Pilates Instructor</p>
-    <h1 class="hero-h1">
-      Stressed, Anxious &amp;<br>
-      <em>Running on Empty?</em><br>
-      Your Breath Can Change That.
-    </h1>
-    <p class="hero-sub">
-      The most effective nervous system reset is already within you. I help you access it, refine it, and trust it — one breath at a time.
-    </p>
-    <div class="hero-ctas">
-      <a href="#events" class="btn-primary">Book My First Session →</a>
-      <a href="#story" class="btn-secondary">Read Taylor's Story</a>
-    </div>
-    <div class="hero-stats">
+  <div class="container">
+    <div class="hero-inner">
       <div>
-        <span class="stat-num">5★</span>
-        <span class="stat-label">Google Rated</span>
+        <div class="eyebrow anim">Gold Coast Web Design</div>
+        <h1 class="anim d1">
+          <em>A website your<br>business deserves.</em>
+        </h1>
+        <p class="agitate anim d2">
+          Clean, modern websites designed for Gold Coast businesses that need their first website or a fresh new look. <strong>Initial design concepts delivered within 24 hours.</strong>
+        </p>
+        <div class="stats-row anim d3">
+          <div><div class="stat-num">8–15</div><div class="stat-lbl">Leads lost per month</div></div>
+          <div><div class="stat-num">5 sec</div><div class="stat-lbl">Before visitors leave</div></div>
+          <div><div class="stat-num">99%</div><div class="stat-lbl">Google you first</div></div>
+          <div><div class="stat-num">24hr</div><div class="stat-lbl">Concept delivery</div></div>
+        </div>
+        <div class="cta-row anim d4">
+          <button class="btn-gold" onclick="goToAudit()">Get My Free Website Audit →</button>
+          <button class="btn-outline" onclick="goToProcess()">See How It Works</button>
+        </div>
+        <div class="hero-guarantee anim d4">100% free. No obligation. Results in 24 hours.</div>
       </div>
 
-      <div>
-        <span class="stat-num">GC + Melb</span>
-        <span class="stat-label">Locations</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <!-- Use Taylor4.jpg (her guiding a participant) as the hero image -->
-    <!-- PLACEHOLDER: Replace src with Taylor4.jpg (Taylor guiding a participant) -->
-    <img class="hero-img"
-      src="images/Sunrise.JPG"
-      alt="Taylor Valentino guiding a breathwork session"
-      onerror="this.style.background='#c9a097';this.removeAttribute('src')">
+      <!-- JD POINT 6: Lead magnet form — two audiences -->
+      <div id="audit-form">
+        <div class="form-card anim d1">
+          <span class="form-badge">🎁 Free — No Catch</span>
+          <h3>Get Your Free Website Strategy</h3>
+          <p>Tell us where you're at and we'll show you exactly what we'd do — at zero cost, zero obligation.</p>
 
-  </div>
-</section>
+          <!-- TOGGLE -->
+          <div class="form-toggle">
+            <button class="toggle-btn active" id="tab-has" onclick="switchTab('has')">
+              I have a website<br><span style="font-size:10px;opacity:0.7">that isn't getting leads</span>
+            </button>
+            <button class="toggle-btn" id="tab-none" onclick="switchTab('none')">
+              I don't have<br><span style="font-size:10px;opacity:0.7">a website yet</span>
+            </button>
+          </div>
 
-<!-- TAGLINE BAR -->
-<div class="tagline-bar">
-  <span class="tagline-item"><span class="tagline-dot"></span> Breath + Body + Regulation</span>
-  <span class="tagline-item"><span class="tagline-dot"></span> Nervous System Reset</span>
-  <span class="tagline-item"><span class="tagline-dot"></span> Pilates &amp; Breathwork</span>
-  <span class="tagline-item"><span class="tagline-dot"></span> Gold Coast &amp; Melbourne</span>
-  <span class="tagline-item"><span class="tagline-dot"></span> Limited Spots — Book Early</span>
-</div>
+          <!-- PANEL A: Has a website -->
+          <div class="form-panel active" id="panel-has">
+            <p style="font-size:13px;color:#e8a020;font-weight:700;margin-bottom:14px;">→ We'll audit your site & show you exactly what's losing you leads.</p>
+            <div id="hf-content">
+              <div class="field"><input type="text" id="hf-name" placeholder="Your first name" /></div>
+              <div class="field"><input type="email" id="hf-email" placeholder="Your email address" /></div>
+              <div class="field"><input type="text" id="hf-biz" placeholder="Business name" /></div>
+              <div class="field"><input type="text" id="hf-url" placeholder="Your website URL" /></div>
+              <button class="form-btn" onclick="submitHero('audit')">Get My Free Audit →</button>
+              <p class="form-fine">✓ 100% Free &nbsp;|&nbsp; ✓ No Sales Pitch &nbsp;|&nbsp; ✓ Results in 24hrs</p>
+            </div>
+            <div class="form-success" id="hf-success" style="display:none">
+              <div class="tick">✓</div>
+              <h4>You're locked in!</h4>
+              <p>Your personalised audit will be with you within 24 hours. We'll reach out to book a 15-minute walkthrough too.</p>
+            </div>
+          </div>
 
-<!-- PAIN SECTION -->
-<section class="pain-section">
-  <p class="section-eyebrow">Does This Sound Familiar?</p>
-  <h2 class="section-title">You're Doing All the Right Things.<br><em>So Why Does Your Body Still Feel Like This?</em></h2>
-  <p class="section-body">You've tried the apps, the sleep hygiene, the deep breathing from YouTube. But the anxiety keeps creeping back. The exhaustion doesn't lift. Something's missing — and it's not more effort.</p>
-  <div class="pain-grid">
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-      </span>
-      <h3>"I'm constantly on edge"</h3>
-      <p>Your nervous system has been in overdrive for so long it's forgotten what calm feels like. You're wired, tired, and can't seem to switch off — no matter how much you try to relax.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </span>
-      <h3>"I can't sleep properly"</h3>
-      <p>You lie awake, mind racing. Or you wake at 3am and can't get back. You're exhausted but your body won't let you rest. This is a dysregulated nervous system — and breathwork directly addresses it.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </span>
-      <h3>"I feel disconnected from myself"</h3>
-      <p>You go through the motions but feel numb, flat, or like you're watching your own life from a distance. This dissociation is more common than you think — and it has a solution.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </span>
-      <h3>"I'm carrying things I haven't processed"</h3>
-      <p>Old grief, stress, trauma — it lives in the body. Talk therapy helps the mind. Breathwork accesses what's stored deeper, creating the release your body has been waiting for.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-      </span>
-      <h3>"I keep reacting instead of responding"</h3>
-      <p>Snapping at the kids. Spiralling after a hard conversation. You don't want to — but you can't seem to stop it. Nervous system regulation changes this pattern for good.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep-rose)"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </span>
-      <h3>"Meditation doesn't work for me"</h3>
-      <p>You've tried sitting still. Your mind goes everywhere. Breathwork is active — it gives your body something to do — making it accessible even for the most anxious, restless minds.</p>
-    </div>
-  </div>
-</section>
+          <!-- PANEL B: No website -->
+          <div class="form-panel" id="panel-none">
+            <p style="font-size:13px;color:#e8a020;font-weight:700;margin-bottom:14px;">→ We'll put together a free plan showing what your site could look like & what it would cost.</p>
+            <div id="nw-content">
+              <div class="field"><input type="text" id="nw-name" placeholder="Your first name" /></div>
+              <div class="field"><input type="email" id="nw-email" placeholder="Your email address" /></div>
+              <div class="field"><input type="text" id="nw-biz" placeholder="Business name" /></div>
+              <div class="field">
+                <select id="nw-type">
+                  <option value="" disabled selected>What type of business?</option>
+                  <option>Tradie (plumber, painter, builder etc.)</option>
+                  <option>Cafe / Restaurant / Hospitality</option>
+                  <option>Beauty / Wellness / Health</option>
+                  <option>Retail / Product-based</option>
+                  <option>Professional Services</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <button class="form-btn" onclick="submitHero('noweb')">Get My Free Website Plan →</button>
+              <p class="form-fine">✓ 100% Free &nbsp;|&nbsp; ✓ No Obligation &nbsp;|&nbsp; ✓ Response in 24hrs</p>
+            </div>
+            <div class="form-success" id="nw-success" style="display:none">
+              <div class="tick">✓</div>
+              <h4>Perfect — we'll be in touch!</h4>
+              <p>We'll put together a free plan and concept for your new site. Expect to hear from us within 24 hours.</p>
+            </div>
+          </div>
 
-<!-- STORY SECTION -->
-<section class="story-section" id="story">
-  <div class="story-img-side">
-    <!-- PLACEHOLDER: Replace src with Taylor3.jpg or Taylor10.jpg (Taylor meditating/practising) -->
-    <img class="story-img"
-      src="images/Taylor4.jpg"
-      alt="Taylor Valentino"
-      onerror="this.style.background='#e8d5cc'">
-    <div class="story-img-overlay"></div>
-  </div>
-  <div class="story-text-side">
-    <p class="section-eyebrow">Taylor's Story</p>
-    <h2 class="section-title">She Knows What It Feels Like to Be <em>Completely Shut Down.</em></h2>
-    <div class="story-pull">
-      "I realised I had the remote control to my nervous system within me the entire time — my breath."
-    </div>
-    <p>Taylor's self-development and healing journey started with trauma. At 16, a boating accident left her with PTSD, chronic anxiety, panic attacks, and flashbacks that followed her for years. More trauma came in her 20s, and she buried it, not realising she was quietly building a dysregulated nervous system.</p>
-    <p>Three years ago, her daughter became critically ill. After years already living in a state of fight-or-flight, this was enough to completely shut her down. <strong>"I remember feeling like my spirit left my body. I had completely dissociated from myself."</strong></p>
-    <p>That moment became the turning point. For the sake of her children, Taylor began prioritising her own health through movement and breathwork and discovered the power she had always held in her own body. She trained to become a certified breathwork facilitator and Pilates instructor and packed up her family to move from Melbourne to the Gold Coast for a completely new life.</p>
-    <p>Now she holds that same space for you. Teaching people how to move their body, breathe with intention, and finally regulate their nervous system — from the inside out.</p>
-    <p>Taylor's approach is grounded in nervous system science but delivered with warmth, authenticity, and the kind of safety that only comes from someone who has done their own deep work. She doesn't teach theory — she teaches from lived experience.</p>
-    <p>Taylor runs regular sessions across the Gold Coast and Melbourne and is passionate about making breathwork accessible, whether you're a complete beginner or someone who's been on a wellness journey for years.</p>
-    <div class="about-credentials" style="margin-top: 1.8rem; margin-bottom: 1.5rem;">
-      <div class="credential"><span class="credential-dot"></span> Certified Breathwork Facilitator</div>
-      <div class="credential"><span class="credential-dot"></span> Mat &amp; Reformer Pilates Instructor</div>
-      <div class="credential"><span class="credential-dot"></span> Gold Coast &amp; Melbourne Events</div>
-      <div class="credential"><span class="credential-dot"></span> 5-Star Google Rated</div>
-    </div>
-    <a href="#contact" class="btn-primary" style="margin-top: 0.5rem; display: inline-block;">Work With Taylor →</a>
-  </div>
-</section>
-
-<!-- WHAT WE OFFER -->
-<section class="what-section" id="services">
-  <p class="section-eyebrow">Sessions &amp; Events</p>
-  <h2 class="section-title">Every Session is Designed to Leave You Feeling <em>Relaxed, Restored &amp; Reconnected.</em></h2>
-  <p class="section-body">Whether you're brand new to breathwork or a regular, there's a session designed for exactly where you are right now.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="service-num">01</span>
-      <h3>Breathwork Release Session</h3>
-      <span class="service-price">From $39 per person · Gold Coast</span>
-      <p>A deep, transformative 90-minute breathwork session at The Move Room, Currumbin. Guided breath patterns designed to release stored tension, calm the nervous system, and create profound emotional release. Bolsters, eye masks &amp; a safe, held environment provided. Limited spots — and they sell out fast.</p>
-      <a href="https://lu.ma/marchapril" target="_blank" class="service-link">Book Now →</a>
-    </div>
-    <div class="service-card">
-      <span class="service-num">02</span>
-      <h3>Rise &amp; Flow — Pilates &amp; Breath by the Beach</h3>
-      <span class="service-price">$15 · Regular Monthly Pop-Ups · Burleigh Heads</span>
-      <p>Regular monthly pop-up sessions combining mat Pilates and breathwork by the ocean at Burleigh Heads. BYO mat or towel and water. The most beautiful way to reset — body moving, breath flowing, feet on the sand.</p>
-      <a href="https://lu.ma/m6gx5y2h" target="_blank" class="service-link">Book Now →</a>
-    </div>
-    <div class="service-card">
-      <span class="service-num">03</span>
-      <h3>Melbourne Pop-Up Events</h3>
-      <span class="service-price">$39 · Periodic · Croydon Melbourne</span>
-      <p>Taylor returns to her Melbourne roots regularly for pop-up breathwork sessions at Legacy Pilates Studio, Croydon. These events fill quickly — subscribe below to be the first to know when Melbourne dates are announced.</p>
-      <a href="https://lu.ma/9ju5ms11" target="_blank" class="service-link">Book Now →</a>
-    </div>
-    <div class="service-card">
-      <span class="service-num">04</span>
-      <h3>1:1 Sessions</h3>
-      <span class="service-price">Pricing varies · Gold Coast &amp; Online</span>
-      <p>Your 1:1 breathwork session is a personalised space designed entirely around you — your body, your pace, your goals. Together, we explore targeted breathing techniques that support nervous system regulation, emotional release, and deeper self-connection. Every session is tailored to what you need on the day, whether that's calm, clarity, grounding, or a full reset. Pricing varies depending on session length and style.</p>
-      <a href="#contact" class="service-link">Enquire with Taylor →</a>
-    </div>
-  </div>
-</section>
-
-<!-- UPCOMING EVENTS -->
-<section class="events-section" id="events">
-  <p class="section-eyebrow">Upcoming Sessions</p>
-  <h2 class="section-title">Book Your Spot —<em> Limited Places Available</em></h2>
-  <p class="section-body">Taylor's sessions always sell out. Don't wait until they're gone — secure your spot now.</p>
-
-  <div class="events-list">
-    <a href="https://lu.ma/9ju5ms11" target="_blank" style="text-decoration:none;color:inherit;">
-    <div class="event-row" style="cursor:pointer;">
-      <div class="event-date">
-        <span class="event-date-num">TBA</span>
-        <span class="event-date-month">Aug/Sep</span>
+        </div>
       </div>
-      <div class="event-info">
-        <h4>Melbourne Pop-Up · Breathwork</h4>
-        <p>Legacy Pilates Studio · Croydon, Melbourne · 1:00pm – 2:30pm</p>
-      </div>
-      <div class="event-price">$39<span>Per Person</span></div>
     </div>
-    </a>
-    <a href="https://lu.ma/marchapril" target="_blank" style="text-decoration:none;color:inherit;">
-    <div class="event-row" style="cursor:pointer;">
-      <div class="event-date">
-        <span class="event-date-num">TBA</span>
-        <span class="event-date-month">Aug/Sep</span>
-      </div>
-      <div class="event-info">
-        <h4>RELEASE — Breathwork Session</h4>
-        <p>The Move Room · Currumbin Waters, Gold Coast · 10:00am – 11:30am</p>
-      </div>
-      <div class="event-price">$39<span>Per Person</span></div>
-    </div>
-    </a>
-    <a href="https://lu.ma/marchapril" target="_blank" style="text-decoration:none;color:inherit;">
-    <div class="event-row" style="cursor:pointer;">
-      <div class="event-date">
-        <span class="event-date-num">TBA</span>
-        <span class="event-date-month">Aug/Sep</span>
-      </div>
-      <div class="event-info">
-        <h4>RELEASE — Breathwork Session</h4>
-        <p>The Move Room · Currumbin Waters, Gold Coast · 10:00am – 11:30am</p>
-      </div>
-      <div class="event-price">$39<span>Per Person</span></div>
-    </div>
-    </a>
-    <a href="https://lu.ma/m6gx5y2h" target="_blank" style="text-decoration:none;color:inherit;">
-    <div class="event-row" style="cursor:pointer;">
-      <div class="event-date">
-        <span class="event-date-num">Reg</span>
-        <span class="event-date-month">Ongoing</span>
-      </div>
-      <div class="event-info">
-        <h4>Rise &amp; Flow — Pilates &amp; Breath by the Beach</h4>
-        <p>Burleigh Heads Beach · Gold Coast · 6:00am Mat Pilates + 6:40am Breathwork</p>
-      </div>
-      <div class="event-price">$15<span>Per Person</span></div>
-    </div>
-    </a>
-  </div>
-
-  <div class="events-cta-wrap">
-    <a href="https://lu.ma/marchapril" target="_blank" class="btn-primary">Book Your Spot →</a>
   </div>
 </section>
 
 <!-- PROOF BAR -->
 <div class="proof-bar">
-  <div class="proof-bar-inner">
-    <div class="proof-item">
-      <span class="proof-num">5★</span>
-      <span class="proof-label">Google Reviews</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">1,962</span>
-      <span class="proof-label">Instagram Followers</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">2</span>
-      <span class="proof-label">Cities & Growing</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">100%</span>
-      <span class="proof-label">Would Return</span>
-    </div>
+  <div class="container proof-inner">
+    <div class="proof-item"><a href="https://g.page/r/Cfdm27s-FYjPEAI/review" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">⭐ Leave Us a Google Review</a></div>
+    <div class="proof-item">📍 Gold Coast Based</div>
+    <div class="proof-item">🤝 No Lock-In Contracts</div>
+    <div class="proof-item">⚡ Sites Live in 14 Days</div>
+    <div class="proof-item">🎨 Custom Design Every Time</div>
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section" id="reviews">
-  <p class="section-eyebrow">Love Notes</p>
-  <h2 class="section-title">Real People. <em>Real Transformations.</em></h2>
-  <p class="section-body">Don't just take Taylor's word for it — here's what people say the moment they leave the mat.</p>
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"The most amazing breathwork session I have ever experienced. Taylor made us all feel safe to go on this journey together. Her voice guiding us was meditating and relaxing. I was shocked to experience so many emotions and such a huge release. Cannot wait for the next one!"</p>
-      <div class="testimonial-author">Courtney Larsen</div>
-      <span class="testimonial-tag">Google Review</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"Taylor's breath work class was incredible. Her voice is very calming, and she is so welcoming and warm. As a first timer I was so impressed with how Taylor explained exactly how the class would go and what a safe environment she has created. I personally got so much out of the class."</p>
-      <div class="testimonial-author">Sarah O'Donnell</div>
-      <span class="testimonial-tag">Google Review · Local Guide</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"I was lucky enough to attend Taylor's Melbourne breathwork session — just wow, what a beautiful experience. I felt so safe, guided, and left feeling so much gratitude. I left feeling calmer and more grounded. I can't wait to do another session with Taylor on the Gold Coast."</p>
-      <div class="testimonial-author">Melissa Ratcliff</div>
-      <span class="testimonial-tag">Google Review · Melbourne</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"Wonderful experience, Taylor is incredible. Highly encourage you to try her program and experience the results and benefits yourself."</p>
-      <div class="testimonial-author">Blake Fowler</div>
-      <span class="testimonial-tag">Google Review</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"I loved Taylor's workshop. I'd never done breathwork before and I felt so good after it!"</p>
-      <div class="testimonial-author">Kelly Maddocks</div>
-      <span class="testimonial-tag">Google Review · First Timer</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"My experience with The Breath Therapy was amazing. Taylor made me feel very comfortable and safe. I would recommend this to anyone."</p>
-      <div class="testimonial-author">Anne Larsen</div>
-      <span class="testimonial-tag">Google Review</span>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">"Taylor is the real deal. Her presence is calm, her guidance is clear and the session flows beautifully. She creates a space that feels both safe and transformative — I left feeling lighter, clearer and genuinely restored. Best decision I've made in a while. Highly recommend to anyone curious about breathwork."</p>
-      <div class="testimonial-author">Phil Campbell</div>
-      <span class="testimonial-tag">Google Review</span>
-    </div>
-  </div>
-
-  <!-- GOOGLE REVIEW CTA -->
-  <div style="text-align:center; margin-top: 3rem; padding: 2.5rem; background: var(--soft-white); border-radius: 2px;">
-    <p style="font-family: var(--font-display); font-size: 1.6rem; font-style: italic; color: var(--charcoal); margin-bottom: 0.8rem;">Loved your session with Taylor?</p>
-    <p style="font-size: 0.95rem; color: var(--warm-grey); margin-bottom: 1.8rem;">Your review helps others find the healing they're looking for. It takes less than a minute and means the world.</p>
-    <a href="https://search.google.com/local/writereview?placeid=ChIJtz-auRMDkWsRdhELEDl5-iY" target="_blank" style="display:inline-flex; align-items:center; gap: 0.6rem; background: var(--charcoal); color: var(--cream); padding: 14px 28px; border-radius: 2px; font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s;">
-      ⭐ Leave a Google Review
-    </a>
+<!-- VELOX DEFINITION — compact banner -->
+<section class="velox-definition">
+  <div class="velox-def-inner">
+    <div class="velox-def-word">VELOX<span>.</span></div>
+    <div class="velox-def-phonetic">(vel · ox)</div>
+    <div class="velox-def-line"></div>
+    <div class="velox-def-pos">Latin &nbsp;·&nbsp; adjective</div>
+    <div class="velox-def-meaning">"Swift. Fast. Moving with purpose."</div>
+    <div class="velox-def-sub">The root of <em>velocity</em>. The heart of Studio Velox.</div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <p class="section-eyebrow">Get in Touch</p>
-  <h2 class="section-title">Ready to Begin? <em>Let's Talk.</em></h2>
-  <p class="section-body">Not sure which session is right for you? Send Taylor a message and she'll point you in the right direction. First-timers are always welcome.</p>
-  <form class="contact-form" onsubmit="handleContact(event)">
-    <div class="form-row">
-      <input type="text" placeholder="First Name" required>
-      <input type="text" placeholder="Last Name">
+
+
+<!-- ══ BEFORE / AFTER SHOWCASE ══ -->
+<section class="showcase">
+  <div class="container">
+    <div class="sec-label">Real business transformations</div>
+    <h2 class="sec-title anim">See Exactly What We Do —<br><em>Before & After, Side by Side</em></h2>
+    <p class="showcase-intro anim">Real businesses. Real websites we've transformed. Watch the before, watch the after — and ask yourself honestly which one you'd call.</p>
+
+    <div class="showcase-grid">
+
+      <!-- CLIENT 1: Ellie -->
+      <div class="showcase-item anim">
+        <div class="showcase-panel">
+          <span class="showcase-label label-before">Before</span>
+          <div class="showcase-video" id="ellie-before">
+            <iframe src="https://www.youtube.com/embed/lbebKxfUOBw" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">DoGood Pet Nutrition</div>
+            <div class="showcase-type">Current website — <a href="https://dogoodgc.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">dogoodgc.com.au</a></div>
+          </div>
+        </div>
+        <div class="showcase-panel">
+          <span class="showcase-label label-after" style="background:#7b5ea7;">Future</span>
+          <div class="showcase-video" id="ellie-after">
+            <iframe src="https://www.youtube.com/embed/XmISAMu9ZOw" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">DoGood Pet Nutrition</div>
+            <div class="showcase-type">Future redesign — <a href="https://pacman1979.github.io/DoGoodGC/v2/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">preview here</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT 2: Evan / Tri-Axle Group -->
+      <div class="showcase-item anim">
+        <div class="showcase-panel">
+          <span class="showcase-label label-before">Before</span>
+          <div class="showcase-video" id="evan-before">
+            <iframe src="https://www.youtube.com/embed/q6Cxh5QlteI" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">Tri-Axle Group</div>
+            <div class="showcase-type">Original website — <a href="https://triaxlegroup.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">triaxlegroup.com.au</a></div>
+          </div>
+        </div>
+        <div class="showcase-panel">
+          <span class="showcase-label label-after">After</span>
+          <div class="showcase-video" id="evan-after">
+            <iframe src="https://www.youtube.com/embed/vY5qykkGIrA" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">Tri-Axle Group</div>
+            <div class="showcase-type">Redesigned by Studio Velox — <a href="https://triaxlegroup.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">triaxlegroup.com.au</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT 3: Boulangerie Vietnam -->
+      <div class="showcase-item anim">
+        <div class="showcase-panel">
+          <span class="showcase-label label-before">Before</span>
+          <div class="showcase-video" id="bv-before">
+            <iframe src="https://www.youtube.com/embed/aAtABzX_WQY" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">Boulangerie Vietnam Artisan Bakery</div>
+            <div class="showcase-type">Facebook only — <a href="https://boulangerievietnam.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">boulangerievietnam.com.au</a></div>
+          </div>
+        </div>
+        <div class="showcase-panel">
+          <span class="showcase-label label-after">After</span>
+          <div class="showcase-video" id="bv-after">
+            <iframe src="https://www.youtube.com/embed/FUC4RubKtmY" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="showcase-meta">
+            <div class="showcase-biz">Boulangerie Vietnam Artisan Bakery</div>
+            <div class="showcase-type">New website concept — <a href="https://boulangerievietnam.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">boulangerievietnam.com.au</a></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <input type="email" placeholder="Email Address" required>
-    <select>
-      <option value="" disabled selected>Which session interests you?</option>
-      <option>Breathwork Release Session (Gold Coast)</option>
-      <option>Rise & Flow — Beach (Gold Coast)</option>
-      <option>Melbourne Pop-Up</option>
-      <option>Not sure — just want to chat</option>
-    </select>
-    <textarea placeholder="Tell Taylor a little about what's brought you here..."></textarea>
-    <button type="submit">Send My Message →</button>
-    <p class="contact-note">🔒 Your message goes directly to Taylor. She'll personally respond within 24 hours.</p>
-  </form>
+
+    <div class="showcase-cta anim">
+      <p>Want to see what we'd do with your website?</p>
+      <button class="btn-gold" onclick="goToAudit()">Get My Free Audit — See Your Transformation →</button>
+    </div>
+  </div>
 </section>
+
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="sec-label" style="color:var(--gold)">Simple 4-step process</div>
+    <h2 class="sec-title anim">From Free Audit to Live & <em>Generating Leads in Under 2 Weeks</em></h2>
+    <div class="steps">
+      <div class="step-item anim"><div class="step-circle">1</div><div class="step-title">Free Audit</div><div class="step-desc">We score your site against our 8-point framework and show you exactly what we'd fix. Zero cost. Zero obligation.</div></div>
+      <div class="step-item anim d1"><div class="step-circle">2</div><div class="step-title">Custom Plan</div><div class="step-desc">We map out exactly what to build — what to design, what pages you need, and what results to target.</div></div>
+      <div class="step-item anim d2"><div class="step-circle">3</div><div class="step-title">We Build It</div><div class="step-desc">Our team does all the heavy lifting. You spend less than 2 hours on your end total. Live in 14 days.</div></div>
+      <div class="step-item anim d3"><div class="step-circle">4</div><div class="step-title">Leads Roll In</div><div class="step-desc">Your site captures leads, visitors can contact you instantly, and you focus on the work — we handle the rest.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ JD Point 7: Video testimonials -->
+<section class="testimonials">
+  <div class="container">
+    <div class="sec-label">Real Gold Coast businesses. Real results.</div>
+    <h2 class="sec-title anim">Don't Take Our Word for It —<br><em>Hear It From Business Owners Like You</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card anim">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"Phillip is incredibly knowledgeable and always willing to help. He consistently comes up with great ideas to improve my website and always finds a solution, no matter how challenging the problem is. For him, nothing seems impossible. He's easy to communicate with, takes the time needed to properly fix any issue, and never makes you feel rushed. His pricing is very affordable, and working with him gives you complete confidence that you're in good hands."</div>
+        <div class="testi-result">⭐ "I can't recommend Phillip highly enough."</div>
+        <div class="testi-author"><div class="testi-avatar">EG</div><div><div class="testi-name">Ellie Gronkowski</div><div class="testi-biz">DoGood Pet Nutrition — <a href="https://dogoodgc.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">dogoodgc.com.au</a></div></div></div>
+      </div>
+      <div class="testi-card anim d1">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"Studio Velox did a redesign of our website and the experience was excellent from start to finish. Phil was great to deal with, communication was spot on throughout, but what stood out was how fast he turned around an initial concept. Seeing what the site could become so quickly made the whole process easy and got us excited from day one. Would definitely use them again, and I'd recommend Phil and the team to anyone who needs a new website or wants to refresh their existing website."</div>
+        <div class="testi-result">🚀 Fast concept — excited from day one</div>
+        <div class="testi-author"><div class="testi-avatar">EC</div><div><div class="testi-name">Evan Courtney</div><div class="testi-biz">Tri-Axle Group — <a href="https://triaxlegroup.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">triaxlegroup.com.au</a></div></div></div>
+      </div>
+      <div class="testi-card anim d2">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"I couldn't recommend Phil highly enough for creating your website! He made the whole process of creating mine so easy and stress-free. For someone who is terrible at anything tech related (me), he has been incredibly patient and basically took the entire process off my hands. If you are looking for someone who is knowledgeable, reliable and most importantly cares about building something that truly aligns with your brand and your vision, Phil is the person to go to. Thank you so much again for everything 🙏"</div>
+        <div class="testi-result">✨ "Took the entire process off my hands"</div>
+        <div class="testi-author"><div class="testi-avatar">TV</div><div><div class="testi-name">Taylor Valentino</div><div class="testi-biz">The Breath Therapy — <a href="https://thebreaththerapy.com.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">thebreaththerapy.com.au</a></div></div></div>
+      </div>
+    </div>
+    <div class="vid-testi-note">
+      <p><strong>📹 Video testimonials coming soon.</strong> We capture real client stories at the moment they're most excited about their results. Want to be one of our first case studies? <a href="#" style="color:var(--gold);font-weight:700" onclick="scrollTo('audit-form');return false">Claim your free audit →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ JD Point 8: Compelling reasons to choose you -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div>
+        <div class="sec-label">Why Studio Velox</div>
+        <h2 class="sec-title" style="margin-bottom:28px;">5 Reasons Gold Coast Businesses <em>Choose Us Over the Rest</em></h2>
+        <ul class="trust-list anim">
+          <li class="trust-item"><div class="trust-num">01</div><div><div class="trust-ttl">We're Gold Coast locals — we know your market</div><div class="trust-dsc">Not an offshore agency or a faceless corporation. We're based here, we know the local market, and we're available when you need us.</div></div></li>
+          <li class="trust-item"><div class="trust-num">02</div><div><div class="trust-ttl">We build to a proven conversion framework — not just looks</div><div class="trust-dsc">Our 8-point homepage formula is built on direct-response principles proven across thousands of Australian businesses. Pretty sites don't pay bills — sites built to convert do.</div></div></li>
+          <li class="trust-item"><div class="trust-num">03</div><div><div class="trust-ttl">Live in 14 days — not 14 weeks</div><div class="trust-dsc">Other agencies drag projects on for months. We have a streamlined system that gets you live and generating leads in 14 days flat.</div></div></li>
+          <li class="trust-item"><div class="trust-num">04</div><div><div class="trust-ttl">We keep it simple — no tech jargon</div><div class="trust-dsc">You don't need to understand code or web design to work with us. We handle everything and explain it in plain English throughout the process.</div></div></li>
+          <li class="trust-item"><div class="trust-num">05</div><div><div class="trust-ttl">No lock-in contracts — ever</div><div class="trust-dsc">We earn your ongoing business by delivering results, not by trapping you in a long contract. Stay because it's working — not because you have to.</div></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="creds anim d1">
+          <div class="creds-label">Studio Velox by the numbers</div>
+          <div class="cred-row"><div class="cred-n">14</div><div class="cred-l">days average from start to live</div></div>
+          <hr class="cred-div">
+          <div class="cred-row"><div class="cred-n">24hr</div><div class="cred-l">initial concept turnaround</div></div>
+          <hr class="cred-div">
+          <div class="cred-row"><div class="cred-n">8pt</div><div class="cred-l">proven homepage conversion framework</div></div>
+          <hr class="cred-div">
+          <div class="cred-row"><div class="cred-n">5★</div><div class="cred-l">Google-rated service</div></div>
+          <div class="guarantee">
+            <h4>🤝 The Studio Velox Commitment</h4>
+            <p>We care genuinely about every website we build. You'll have direct access to Phil throughout the entire process — no account managers, no outsourcing, no disappearing acts. Just honest work, clear communication, and a site you're proud to share.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ JD Point 6 repeated: Data capture with WOW Factor urgency -->
+<section class="final-cta">
+  <div class="final-inner">
+    <h2>Ready to Get Started?<br>Claim Your Free Website Strategy Today.</h2>
+    <p>Find out exactly what we'd do with your business online — whether you need a brand new site or a complete transformation. It's free, it takes 15 minutes to review, and it could be the most valuable thing you do for your business this year.</p>
+    <div id="ff-wrap">
+      <div class="final-form">
+        <input type="email" id="ff-email" placeholder="Enter your email address" />
+        <button onclick="submitFinal()">Send My Free Audit →</button>
+      </div>
+      <p class="final-small">✓ Free — No obligation &nbsp;|&nbsp; ✓ Results in 24 hours &nbsp;|&nbsp; ✓ No sales pitch</p>
+    </div>
+    <div class="final-success" id="ff-success">
+      <h3>You're in! 🎉</h3>
+      <p>We'll be in touch within 24 hours with your personalised audit.</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <span class="footer-brand-name">The Breath Therapy</span>
-      <p class="footer-tagline">Helping people breathe, move and regulate their nervous system — from the Gold Coast to Melbourne and beyond.<br><br>Taylor Valentino · Breathwork Facilitator &amp; Pilates Instructor</p>
+  <div class="container foot-inner">
+    <div class="foot-logo">STUD<span style="color:var(--gold)">IO</span> <span style="color:var(--gold)">VE</span>LOX<span style="color:var(--gold)">.</span></div>
+    <div class="foot-copy">© 2026 Studio Velox. Gold Coast Web Design.</div>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="mailto:phil@studiovelox.com">phil@studiovelox.com</a>
+      <a href="tel:0422777865">0422 777 865</a>
+      <a href="https://g.page/r/Cfdm27s-FYjPEAI/review" target="_blank" rel="noopener" style="color:var(--gold);">⭐ Google Review</a>
     </div>
-    <div class="footer-col">
-      <h4>Sessions</h4>
-      <ul>
-        <li><a href="#services">Breathwork Release</a></li>
-        <li><a href="#services">Rise &amp; Flow Beach</a></li>
-        <li><a href="#services">Melbourne Pop-Ups</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="https://www.instagram.com/thebreaththerapy_/" target="_blank">@thebreaththerapy_</a></li>
-        <li><a href="https://search.google.com/local/writereview?placeid=ChIJtz-auRMDkWsRdhELEDl5-iY" target="_blank">⭐ Leave a Google Review</a></li>
-        <li><a href="#events">Upcoming Events</a></li>
-        <li><a href="https://lu.ma/marchapril" target="_blank">Book Now</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 The Breath Therapy · Taylor Valentino · Gold Coast, QLD</span>
-    <span class="footer-note">Website by <a href="https://studiovelox.com" style="color: rgba(255,255,255,0.3);">Velox</a></span>
   </div>
 </footer>
 
 <script>
-  function handleContact(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Message Sent — Taylor will be in touch!';
-    btn.style.background = 'var(--deep-rose)';
-    btn.disabled = true;
+function goToAudit() {
+  document.getElementById('audit-form').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => { document.getElementById('hf-name').focus(); }, 600);
+}
+
+function goToProcess() {
+  document.getElementById('process').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Toggle between has-website and no-website panels
+function switchTab(tab) {
+  document.getElementById('panel-has').classList.toggle('active', tab === 'has');
+  document.getElementById('panel-none').classList.toggle('active', tab === 'none');
+  document.getElementById('tab-has').classList.toggle('active', tab === 'has');
+  document.getElementById('tab-none').classList.toggle('active', tab === 'none');
+  if (tab === 'has') setTimeout(() => document.getElementById('hf-name').focus(), 100);
+  if (tab === 'none') setTimeout(() => document.getElementById('nw-name').focus(), 100);
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+
+// Save lead locally
+function saveLead(data) {
+  try {
+    const leads = JSON.parse(localStorage.getItem('velox_leads') || '[]');
+    leads.push({ ...data, ts: new Date().toISOString() });
+    localStorage.setItem('velox_leads', JSON.stringify(leads));
+  } catch(e) {}
+}
+
+// Formspree form ID
+const FORM_ID = 'maqzdven';
+
+// Hero form — handles both audit and no-website submissions
+async function submitHero(type) {
+  if (type === 'audit') {
+    const name  = document.getElementById('hf-name').value.trim();
+    const email = document.getElementById('hf-email').value.trim();
+    const biz   = document.getElementById('hf-biz').value.trim();
+    const url   = document.getElementById('hf-url').value.trim();
+    if (!name || !email || !biz) { alert('Please fill in your name, email and business name.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, business: biz, website: url, _subject: `Free Audit Request — ${biz}` })
+      });
+      const data = await res.json();
+      if (!res.ok) { console.error('Formspree error:', data); }
+    } catch(e) { console.log('Submission error:', e); }
+    saveLead({ name, email, biz, url, source: 'hero-audit' });
+    document.getElementById('hf-content').style.display = 'none';
+    document.getElementById('hf-success').style.display = 'block';
+
+  } else {
+    const name  = document.getElementById('nw-name').value.trim();
+    const email = document.getElementById('nw-email').value.trim();
+    const biz   = document.getElementById('nw-biz').value.trim();
+    const bizType = document.getElementById('nw-type').value;
+    if (!name || !email || !biz || !bizType) { alert('Please fill in all fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, business: biz, businessType: bizType, _subject: `New Website Request — ${biz}` })
+      });
+      const data = await res.json();
+      if (!res.ok) { console.error('Formspree error:', data); }
+    } catch(e) { console.log('Submission error:', e); }
+    saveLead({ name, email, biz, bizType, source: 'hero-noweb' });
+    document.getElementById('nw-content').style.display = 'none';
+    document.getElementById('nw-success').style.display = 'block';
   }
+}
 
-  // Smooth reveal on scroll
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+// Final CTA form
+async function submitFinal() {
+  const email = document.getElementById('ff-email').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, _subject: 'Free Audit Request — Footer CTA' })
     });
-  }, { threshold: 0.1 });
+    const data = await res.json();
+    if (!res.ok) { console.error('Formspree error:', data); }
+  } catch(e) { console.log('Submission error:', e); }
+  saveLead({ email, source: 'final-cta' });
+  document.getElementById('ff-wrap').style.display = 'none';
+  document.getElementById('ff-success').style.display = 'block';
+}
 
-  document.querySelectorAll('.pain-card, .service-card, .testimonial-card, .why-item, .location-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    cardObserver.observe(el);
-  });
+// end of scripts
+
+// end of scripts
 </script>
-
 </body>
 </html>
