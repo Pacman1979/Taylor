@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Breath Therapy — Website Owner's Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f4;
+    --blush: #e8d5cc;
+    --rose: #c9a097;
+    --gold: #c8a84b;
+    --gold-light: #e2c46a;
+    --charcoal: #2c2825;
+    --warm-grey: #7a6f69;
+    --soft-white: #f5f0eb;
+    --deep-rose: #9e6e63;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Jost', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .guide-header {
+    background: var(--charcoal);
+    padding: 50px 5% 40px;
+    text-align: center;
+  }
+  .guide-header .brand {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .guide-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+  .guide-header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* NOTICE */
+  .notice {
+    background: var(--deep-rose);
+    color: white;
+    padding: 14px 5%;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* LAYOUT */
+  .guide-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 5% 100px;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--soft-white);
+    border: 1px solid var(--blush);
+    padding: 2rem 2.5rem;
+    margin-bottom: 3rem;
+    border-radius: 2px;
+  }
+  .toc h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    padding-left: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 2rem;
+  }
+  .toc ol li a {
+    color: var(--deep-rose);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+  .toc ol li a:hover { text-decoration: underline; }
+
+  /* SECTIONS */
+  .guide-section {
+    margin-bottom: 3.5rem;
+    border-top: 2px solid var(--blush);
+    padding-top: 2.5rem;
+  }
+  .section-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .guide-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+  }
+  .guide-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin: 2rem 0 0.7rem;
+  }
+  .guide-section p {
+    font-size: 0.95rem;
+    color: var(--warm-grey);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .guide-section p strong { color: var(--charcoal); font-weight: 500; }
+
+  /* STEPS */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 1rem 0 1.5rem;
+  }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(step);
+    background: var(--charcoal);
+    color: var(--cream);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .steps li p {
+    margin: 0;
+  }
+
+  /* BULLETS */
+  .bullets {
+    list-style: none;
+    margin: 1rem 0 1.5rem;
+  }
+  .bullets li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    color: var(--warm-grey);
+  }
+  .bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--deep-rose);
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  /* CODE / URL BOX */
+  .code-box {
+    background: var(--charcoal);
+    color: var(--gold-light);
+    padding: 12px 18px;
+    border-radius: 2px;
+    font-family: monospace;
+    font-size: 0.88rem;
+    margin: 0.8rem 0 1.2rem;
+    word-break: break-all;
+    display: block;
+  }
+
+  /* TIP BOX */
+  .tip {
+    background: var(--soft-white);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin: 1.2rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .tip p {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+  .tip strong { color: var(--charcoal); }
+
+  /* WARNING BOX */
+  .warning {
+    background: #fff5f5;
+    border-left: 3px solid var(--deep-rose);
+    padding: 1rem 1.5rem;
+    margin: 1.2rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .warning p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--deep-rose);
+  }
+
+  /* PROMPT EXAMPLE */
+  .prompt-example {
+    background: var(--soft-white);
+    border: 1px solid var(--blush);
+    padding: 1.2rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 2px;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .prompt-example::before {
+    content: '💬 Example prompt:';
+    display: block;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* DIAGRAM */
+  .diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  .diagram-box {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border-radius: 2px;
+    min-width: 130px;
+  }
+  .diagram-box .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .diagram-box .name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+  .diagram-arrow {
+    color: var(--rose);
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  /* PRICING */
+  .pricing-box {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+    border-radius: 2px;
+    text-align: center;
+  }
+  .pricing-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .pricing-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .pricing-option {
+    background: rgba(255,255,255,0.06);
+    padding: 1.5rem;
+    border-radius: 2px;
+    border-top: 2px solid var(--gold);
+  }
+  .pricing-option .price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .pricing-option .type {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .pricing-option p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.83rem;
+    margin: 0;
+  }
+
+  /* FOOTER */
+  .guide-footer {
+    background: var(--charcoal);
+    padding: 40px 5%;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+  }
+  .guide-footer a { color: var(--gold-light); text-decoration: none; }
+
+  /* QUICK LINKS */
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .quick-link {
+    background: var(--soft-white);
+    border: 1px solid var(--blush);
+    padding: 1.2rem 1.5rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .quick-link:hover { background: var(--blush); }
+  .quick-link .ql-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .quick-link .ql-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+
+  @media (max-width: 600px) {
+    .toc ol { grid-template-columns: 1fr; }
+    .pricing-options { grid-template-columns: 1fr; }
+    .diagram { flex-direction: column; }
+    .diagram-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">
+  🔒 This page is private — please don't share the URL with anyone.
+</div>
+
+<div class="guide-header">
+  <span class="brand">The Breath Therapy</span>
+  <h1>Website Owner's Guide</h1>
+  <p>Everything you need to manage your website independently · Last updated August 2026</p>
+</div>
+
+<div class="guide-body">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h2>What's in this guide</h2>
+    <ol>
+      <li><a href="#s1">How your website works</a></li>
+      <li><a href="#s2">Your accounts</a></li>
+      <li><a href="#s3">Setting up GitHub</a></li>
+      <li><a href="#s4">Making website changes</a></li>
+      <li><a href="#s5">Using Claude AI</a></li>
+      <li><a href="#s6">Managing Luma events</a></li>
+      <li><a href="#s7">Your email address</a></li>
+      <li><a href="#s8">Domain renewal</a></li>
+      <li><a href="#s9">If something breaks</a></li>
+      <li><a href="#s10">Getting help</a></li>
+    </ol>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="guide-section" id="quicklinks" style="border-top:none;padding-top:0;margin-bottom:3rem;">
+    <span class="section-num">Your Important Links</span>
+    <h2>Jump straight to what you need</h2>
+    <div class="quick-links">
+      <a class="quick-link" href="https://github.com/Pacman1979/Taylor/blob/main/index.html" target="_blank">
+        <span class="ql-label">Edit your website</span>
+        <span class="ql-name">GitHub → index.html</span>
+      </a>
+      <a class="quick-link" href="https://claude.ai" target="_blank">
+        <span class="ql-label">AI Assistant</span>
+        <span class="ql-name">Claude.ai</span>
+      </a>
+      <a class="quick-link" href="https://dash.cloudflare.com" target="_blank">
+        <span class="ql-label">Hosting & Email</span>
+        <span class="ql-name">Cloudflare</span>
+      </a>
+      <a class="quick-link" href="https://ventraip.com.au" target="_blank">
+        <span class="ql-label">Domain Name</span>
+        <span class="ql-name">VentraIP</span>
+      </a>
+      <a class="quick-link" href="https://lu.ma" target="_blank">
+        <span class="ql-label">Event Bookings</span>
+        <span class="ql-name">Luma</span>
+      </a>
+      <a class="quick-link" href="https://thebreaththerapy.com.au" target="_blank">
+        <span class="ql-label">Your live website</span>
+        <span class="ql-name">thebreaththerapy.com.au</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="guide-section" id="s1">
+    <span class="section-num">Section 1</span>
+    <h2>How your website works</h2>
+    <p>Your website is made up of four services that all talk to each other. You don't need to understand the technical details — just know what each one does and when you'd need to log in.</p>
+
+    <div class="diagram">
+      <div class="diagram-box">
+        <span class="label">Domain Name</span>
+        <span class="name">VentraIP</span>
+      </div>
+      <div class="diagram-arrow">→</div>
+      <div class="diagram-box">
+        <span class="label">Traffic & Email</span>
+        <span class="name">Cloudflare</span>
+      </div>
+      <div class="diagram-arrow">→</div>
+      <div class="diagram-box">
+        <span class="label">Website Code</span>
+        <span class="name">GitHub</span>
+      </div>
+      <div class="diagram-arrow">→</div>
+      <div class="diagram-box">
+        <span class="label">Live Site</span>
+        <span class="name">Your Website</span>
+      </div>
+    </div>
+
+    <h3>VentraIP</h3>
+    <p>This is where <strong>thebreaththerapy.com.au</strong> is registered. Think of it like the deed to your house — it proves you own the domain name. You pay ~$27/year to renew it. You almost never need to log in here.</p>
+
+    <h3>Cloudflare</h3>
+    <p>Cloudflare sits between the internet and your website. It makes your site fast, secure (the padlock), and handles your professional email address (<strong>taylor@thebreaththerapy.com.au</strong>). You rarely need to log in here either.</p>
+
+    <h3>GitHub</h3>
+    <p>This is where your website's code lives. Every time you make a change here, your live website updates automatically within about 60 seconds. <strong>This is where you'll spend most of your time.</strong></p>
+
+    <h3>Claude AI</h3>
+    <p>Claude is an AI assistant you can use to help you write or edit the website code. You describe what you want changed in plain English, Claude writes the code, and you paste it into GitHub. No coding knowledge needed.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="guide-section" id="s2">
+    <span class="section-num">Section 2</span>
+    <h2>Your accounts</h2>
+    <p>Here are the accounts that run your website. Keep these login details somewhere safe (a password manager like <strong>1Password</strong> or even a secure note on your phone).</p>
+
+    <h3>VentraIP — ventraip.com.au</h3>
+    <p>Your domain registrar. You purchased <strong>thebreaththerapy.com.au</strong> here. Log in once a year to renew the domain. That's it.</p>
+    <div class="warning"><p>⚠️ <strong>If this domain expires, your website and email will go offline.</strong> Set a reminder 30 days before the renewal date each year.</p></div>
+
+    <h3>Cloudflare — dash.cloudflare.com</h3>
+    <p>Manages your hosting and email routing. You'll rarely need to come here unless something stops working with your email.</p>
+
+    <h3>GitHub — github.com</h3>
+    <p>Where your website files live. You'll use this regularly to make updates. See Section 3 for setup instructions.</p>
+
+    <h3>Claude AI — claude.ai</h3>
+    <p>Your AI assistant for making website changes. A free account works for basic use. If you find yourself using it a lot, a Pro plan ($25 AUD/month) gives you much more capacity.</p>
+
+    <h3>Luma — lu.ma</h3>
+    <p>Where you create and manage your events and take bookings. This is separate from your website — your website just links to your Luma event pages.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="guide-section" id="s3">
+    <span class="section-num">Section 3</span>
+    <h2>Setting up GitHub</h2>
+    <p>GitHub stores your website code. The good news is you don't need to install anything — you can edit your website directly in your browser.</p>
+
+    <h3>Creating your GitHub account</h3>
+    <ol class="steps">
+      <li><p>Go to <strong>github.com</strong> and click <strong>"Sign up"</strong></p></li>
+      <li><p>Enter your email address, create a password, and choose a username (something like <em>taylorbreaththerapy</em> is fine)</p></li>
+      <li><p>Verify your email address when GitHub sends you a confirmation</p></li>
+      <li><p>Once logged in, go to <strong>github.com/Pacman1979/Taylor</strong> — this is where your website lives</p></li>
+    </ol>
+
+    <div class="tip"><p><strong>Tip:</strong> Bookmark <strong>github.com/Pacman1979/Taylor/blob/main/index.html</strong> — this takes you directly to your website file for editing.</p></div>
+
+    <h3>Getting access to your website's repository</h3>
+    <p>Your website is currently managed under Phil's GitHub account. To get your own full access, Phil can add you as a collaborator:</p>
+    <ol class="steps">
+      <li><p>Send Phil your GitHub username once you've created your account</p></li>
+      <li><p>Phil will add you as a collaborator — you'll receive an email invitation</p></li>
+      <li><p>Accept the invitation and you'll have full edit access</p></li>
+    </ol>
+
+    <h3>Editing your website in GitHub (no code needed)</h3>
+    <ol class="steps">
+      <li><p>Go to <strong>github.com/Pacman1979/Taylor/blob/main/index.html</strong></p></li>
+      <li><p>Click the <strong>pencil icon ✏️</strong> in the top right of the file view</p></li>
+      <li><p>The file will open in an editor — use <strong>Ctrl+F</strong> (or Cmd+F on Mac) to search for the text you want to change</p></li>
+      <li><p>Make your changes directly in the editor</p></li>
+      <li><p>When done, scroll down and click <strong>"Commit changes"</strong></p></li>
+      <li><p>Type a short description of what you changed (e.g. <em>"Update July events"</em>) and click <strong>"Commit changes"</strong> again</p></li>
+      <li><p>Your live website will update automatically within 60 seconds ✅</p></li>
+    </ol>
+
+    <div class="tip"><p><strong>Tip:</strong> Always write a clear commit message. It helps you keep track of what you changed and when. For example: <em>"Add August breathwork event"</em> or <em>"Update Instagram followers to 2,100"</em>.</p></div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="guide-section" id="s4">
+    <span class="section-num">Section 4</span>
+    <h2>Making website changes</h2>
+    <p>Here are the most common things you'll want to update, with exactly where to find them in your website file.</p>
+
+    <h3>Updating the announcement bar</h3>
+    <p>The black bar at the very top of your website. To change it:</p>
+    <ol class="steps">
+      <li><p>Open your website file in GitHub and click the pencil to edit</p></li>
+      <li><p>Press <strong>Ctrl+F</strong> and search for <em>"NOW TAKING BOOKINGS"</em></p></li>
+      <li><p>Change the months (e.g. "August &amp; September" → "October &amp; November")</p></li>
+      <li><p>Commit the change</p></li>
+    </ol>
+
+    <h3>Updating upcoming events</h3>
+    <p>To add or change events in the Upcoming Sessions section:</p>
+    <ol class="steps">
+      <li><p>Search in the file for <em>"ADD NEW EVENTS HERE"</em> — this is the marker where new events go</p></li>
+      <li><p>Copy an existing event block and change the date, title, location, time and price</p></li>
+      <li><p>Update the Luma link to point to the correct booking page (see Section 6)</p></li>
+      <li><p>Delete any past events that are no longer relevant</p></li>
+    </ol>
+
+    <div class="tip"><p><strong>Tip:</strong> If this feels complicated, just ask Claude AI to do it for you. Paste in the event details and Claude will write the exact code to add. See Section 5.</p></div>
+
+    <h3>Adding a new Google review</h3>
+    <ol class="steps">
+      <li><p>Search for <em>"Love Notes"</em> in the file to find the reviews section</p></li>
+      <li><p>Copy an existing review card block and replace the quote, name and tag</p></li>
+      <li><p>Paste it before the dark Google review card (which should always be last)</p></li>
+    </ol>
+
+    <h3>Updating Instagram followers</h3>
+    <ol class="steps">
+      <li><p>Search for the current follower number (e.g. <em>"1,962"</em>)</p></li>
+      <li><p>Change it to the new number</p></li>
+      <li><p>Commit the change</p></li>
+    </ol>
+
+    <h3>Changing a photo</h3>
+    <ol class="steps">
+      <li><p>Go to <strong>github.com/Pacman1979/Taylor</strong> and click the <strong>images</strong> folder</p></li>
+      <li><p>Click <strong>"Add file" → "Upload files"</strong></p></li>
+      <li><p>Upload your new photo — use a simple filename with no spaces (e.g. <em>Taylor-new.jpg</em>)</p></li>
+      <li><p>In the website file, search for the old photo filename and replace it with the new one</p></li>
+    </ol>
+
+    <div class="warning"><p>⚠️ <strong>Photo file sizes:</strong> Keep photos under 2MB where possible. Large files slow down your site. Use your phone's built-in editing tools to reduce size if needed.</p></div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="guide-section" id="s5">
+    <span class="section-num">Section 5</span>
+    <h2>Using Claude AI to make changes</h2>
+    <p>Claude is an AI that understands your website and can write the code changes for you. Think of it as having a web developer on call — you just describe what you want in plain English.</p>
+
+    <h3>Getting started with Claude</h3>
+    <ol class="steps">
+      <li><p>Go to <strong>claude.ai</strong> and create a free account with your email</p></li>
+      <li><p>Start a new conversation</p></li>
+      <li><p>Copy and paste the section of your website file that you want to change, then describe what you want done</p></li>
+      <li><p>Claude will write the updated code for you</p></li>
+      <li><p>Copy Claude's output and paste it into the right place in your GitHub file</p></li>
+    </ol>
+
+    <h3>Example prompts you can copy and use</h3>
+
+    <div class="prompt-example">
+      I manage a website for a breathwork business called The Breath Therapy. I need to update the upcoming events section. Please add this new event: [event name], [date], [location], [time], [price]. The Luma booking link is [your Luma link]. Can you write the HTML code for this event row so I can paste it into my website?
+    </div>
+
+    <div class="prompt-example">
+      I have a new 5-star Google review I'd like to add to my website's Love Notes section. The review is from [Name] and says: "[review text]". Can you write the HTML card code for this review so I can add it to my website?
+    </div>
+
+    <div class="prompt-example">
+      I need to update the announcement bar at the top of my website to say "Now taking bookings for October &amp; November events on the Gold Coast &amp; Melbourne". Can you tell me exactly what text to search for and what to replace it with?
+    </div>
+
+    <div class="prompt-example">
+      Something on my website looks broken — [describe what you see]. Here is the relevant section of my HTML code: [paste the code]. Can you help me fix it?
+    </div>
+
+    <h3>Tips for getting the best results from Claude</h3>
+    <ul class="bullets">
+      <li>Be specific — the more detail you give, the better the result</li>
+      <li>Always tell Claude it's an HTML website for The Breath Therapy</li>
+      <li>If the result isn't right, just say "that's not quite what I meant" and describe it differently</li>
+      <li>Ask Claude to explain what it changed if you want to understand it</li>
+      <li>You can paste screenshots into Claude to show it what something looks like</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="guide-section" id="s6">
+    <span class="section-num">Section 6</span>
+    <h2>Managing Luma events</h2>
+    <p>Luma is where people actually book and pay for your sessions. Your website links to Luma — it doesn't handle payments directly. When you create a new event on Luma, you'll need to update the link on your website.</p>
+
+    <h3>Getting your Luma event link</h3>
+    <ol class="steps">
+      <li><p>Log into <strong>lu.ma</strong> and create your new event</p></li>
+      <li><p>Once published, copy the event URL from your browser — it'll look like <span class="code-box">lu.ma/abc123</span></p></li>
+      <li><p>Update the relevant "Book Now" link on your website to use this new URL</p></li>
+    </ol>
+
+    <h3>Current Luma links on your website</h3>
+    <ul class="bullets">
+      <li><strong>Gold Coast Breathwork events</strong> — lu.ma/marchapril</li>
+      <li><strong>Pilates & Breath by the Beach</strong> — lu.ma/m6gx5y2h</li>
+      <li><strong>Melbourne Breathwork</strong> — lu.ma/9ju5ms11</li>
+    </ul>
+
+    <div class="tip"><p><strong>Tip:</strong> When you create a new round of events, create a new Luma calendar or event group and update all the relevant links on your website at once.</p></div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="guide-section" id="s7">
+    <span class="section-num">Section 7</span>
+    <h2>Your professional email</h2>
+    <p>Your email address <strong>taylor@thebreaththerapy.com.au</strong> is set up to forward all emails into your existing Gmail account. This means you don't need to check a separate inbox — everything comes to you in Gmail as usual.</p>
+
+    <h3>If emails stop arriving</h3>
+    <ol class="steps">
+      <li><p>Log into <strong>dash.cloudflare.com</strong></p></li>
+      <li><p>Click on <strong>thebreaththerapy.com.au</strong></p></li>
+      <li><p>Click <strong>Email → Email Routing</strong></p></li>
+      <li><p>Check that the routing rule is <strong>enabled</strong> and pointing to your Gmail</p></li>
+    </ol>
+
+    <h3>Sending emails from your professional address</h3>
+    <p>To send emails <em>from</em> taylor@thebreaththerapy.com.au (rather than your Gmail address) you can set this up in Gmail settings:</p>
+    <ol class="steps">
+      <li><p>In Gmail, click the <strong>cog icon ⚙️ → See all settings</strong></p></li>
+      <li><p>Click the <strong>Accounts and Import</strong> tab</p></li>
+      <li><p>Under <strong>"Send mail as"</strong> click <strong>"Add another email address"</strong></p></li>
+      <li><p>Enter <strong>Taylor Valentino</strong> and <strong>taylor@thebreaththerapy.com.au</strong></p></li>
+      <li><p>Follow the verification steps</p></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="guide-section" id="s8">
+    <span class="section-num">Section 8</span>
+    <h2>Domain renewal</h2>
+    <p>Your domain name <strong>thebreaththerapy.com.au</strong> needs to be renewed each year through VentraIP. The cost is approximately <strong>$27/year</strong>.</p>
+
+    <div class="warning"><p>⚠️ <strong>This is the most important thing not to forget.</strong> If your domain expires, your website, your professional email, and everything connected to thebreaththerapy.com.au will go offline until it's renewed.</p></div>
+
+    <h3>How to renew</h3>
+    <ol class="steps">
+      <li><p>Log into <strong>ventraip.com.au</strong></p></li>
+      <li><p>Go to <strong>My Services → Domain Names</strong></p></li>
+      <li><p>Click <strong>Renew</strong> next to thebreaththerapy.com.au</p></li>
+      <li><p>Pay the renewal fee</p></li>
+    </ol>
+
+    <div class="tip"><p><strong>Tip:</strong> Set up <strong>auto-renewal</strong> in VentraIP with a credit card on file so it renews automatically every year without you having to remember.</p></div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="guide-section" id="s9">
+    <span class="section-num">Section 9</span>
+    <h2>If something breaks</h2>
+    <p>Don't panic. Websites can be fixed. Here's how to diagnose what's wrong.</p>
+
+    <h3>The whole site is down</h3>
+    <ul class="bullets">
+      <li>Check <strong>cloudflarestatus.com</strong> — there may be a Cloudflare outage</li>
+      <li>Check your domain hasn't expired in VentraIP</li>
+      <li>Wait 10 minutes and try again from a different device or incognito window</li>
+    </ul>
+
+    <h3>A change I made broke something</h3>
+    <ul class="bullets">
+      <li>Go to <strong>github.com/Pacman1979/Taylor/commits/main</strong></li>
+      <li>Find your last commit and click the three dots <strong>···</strong> → <strong>"Revert"</strong></li>
+      <li>This undoes your last change and restores the previous version</li>
+    </ul>
+
+    <h3>Something looks wrong but the site is up</h3>
+    <ul class="bullets">
+      <li>Try a hard refresh: <strong>Ctrl+Shift+R</strong> (Windows) or <strong>Cmd+Shift+R</strong> (Mac)</li>
+      <li>Try opening the site in an incognito/private window</li>
+      <li>Describe the issue to Claude AI with a screenshot — it can usually diagnose and fix it</li>
+    </ul>
+
+    <h3>My email isn't working</h3>
+    <ul class="bullets">
+      <li>Check Cloudflare Email Routing is still enabled (see Section 7)</li>
+      <li>Check your Gmail spam folder</li>
+      <li>Make sure your Gmail verification for the destination address hasn't expired</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="guide-section" id="s10">
+    <span class="section-num">Section 10</span>
+    <h2>Getting help</h2>
+    <p>Your website was built by <strong>Phil Campbell</strong> from Studio Velox. Phil built your site as a gift, and is available for ongoing support when you need it.</p>
+
+    <div class="pricing-box">
+      <h3>Studio Velox — Ongoing Support</h3>
+      <p style="color:rgba(255,255,255,0.55);font-size:0.88rem;margin-bottom:1.5rem;">When you need a hand beyond what's in this guide</p>
+      <div class="pricing-options">
+        <div class="pricing-option">
+          <span class="price">$50</span>
+          <span class="type">Per hour</span>
+          <p>Ad-hoc help as needed. Perfect for one-off changes, fixes or bigger updates.</p>
+        </div>
+        <div class="pricing-option">
+          <span class="price">$147</span>
+          <span class="type">Per month</span>
+          <p>Ongoing monthly support. Includes regular updates, event changes and general maintenance.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>When to call Phil vs use Claude AI</h3>
+    <ul class="bullets">
+      <li><strong>Use Claude AI for:</strong> text changes, adding events, new reviews, updating follower counts, swapping photos, anything described in this guide</li>
+      <li><strong>Call Phil for:</strong> the site going completely offline, DNS or Cloudflare issues, adding a new section or redesigning part of the site, setting up online payments or a shop, anything that feels too technical</li>
+    </ul>
+
+    <h3>Contact</h3>
+    <p><strong>Phil Campbell — Studio Velox</strong><br>
+    Website: <a href="https://studiovelox.com" target="_blank">studiovelox.com</a></p>
+  </div>
+
+</div>
+
+<div class="guide-footer">
+  <p>The Breath Therapy · Website Owner's Guide · Built by <a href="https://studiovelox.com" target="_blank">Studio Velox</a></p>
+  <p style="margin-top:0.5rem;">This page is private. URL: thebreaththerapy.com.au/guide</p>
+</div>
+
+</body>
+</html>
