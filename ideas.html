@@ -445,7 +445,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  const STORAGE_KEY = 'tbt-ideas-v1';
+  const API = '/api/ideas';
   let allIdeas = [];
   let currentFilter = 'all';
 
@@ -511,16 +511,14 @@
 
   async function loadIdeas() {
     try {
-      const result = await window.storage.get(STORAGE_KEY, true);
-      allIdeas = result ? JSON.parse(result.value) : [];
-    } catch {
-      allIdeas = [];
+      const res = await fetch(API);
+      if (!res.ok) throw new Error('Failed to load');
+      allIdeas = await res.json();
+    } catch (err) {
+      document.getElementById('ideasList').innerHTML = '<div class="empty-state"><span class="empty-icon">⚠️</span><p>Could not load ideas. Please try refreshing.</p></div>';
+      return;
     }
     renderIdeas();
-  }
-
-  async function saveIdeas() {
-    await window.storage.set(STORAGE_KEY, JSON.stringify(allIdeas), true);
   }
 
   async function addIdea() {
@@ -535,19 +533,21 @@
     btn.disabled = true;
     btn.textContent = 'Saving...';
 
-    const idea = {
-      id: Date.now().toString(),
-      author,
-      text,
-      category,
-      timestamp: Date.now()
-    };
-
-    allIdeas.push(idea);
-    await saveIdeas();
-    document.getElementById('ideaText').value = '';
-    renderIdeas();
-    showToast('✓ Idea saved!');
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ author, text, category })
+      });
+      if (!res.ok) throw new Error('Failed to save');
+      const newIdea = await res.json();
+      allIdeas.push(newIdea);
+      document.getElementById('ideaText').value = '';
+      renderIdeas();
+      showToast('✓ Idea saved!');
+    } catch {
+      showToast('❌ Could not save — please try again');
+    }
 
     btn.disabled = false;
     btn.textContent = 'Add Idea →';
@@ -555,10 +555,15 @@
 
   async function deleteIdea(id) {
     if (!confirm('Delete this idea?')) return;
-    allIdeas = allIdeas.filter(i => i.id !== id);
-    await saveIdeas();
-    renderIdeas();
-    showToast('Idea deleted');
+    try {
+      const res = await fetch(`${API}?id=${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Failed to delete');
+      allIdeas = allIdeas.filter(i => i.id !== id);
+      renderIdeas();
+      showToast('Idea deleted');
+    } catch {
+      showToast('❌ Could not delete — please try again');
+    }
   }
 
   function filterIdeas(cat, btn) {
