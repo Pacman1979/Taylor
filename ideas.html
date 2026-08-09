@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Breath Therapy — Ideas Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f4;
+    --blush: #e8d5cc;
+    --rose: #c9a097;
+    --gold: #c8a84b;
+    --gold-light: #e2c46a;
+    --charcoal: #2c2825;
+    --warm-grey: #7a6f69;
+    --soft-white: #f5f0eb;
+    --deep-rose: #9e6e63;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Jost', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .page-header {
+    background: var(--charcoal);
+    padding: 14px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--gold-light); }
+  .page-header .brand {
+    font-family: var(--font-script);
+    font-size: 1.6rem;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .private-badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    background: rgba(158,110,99,0.15);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(158,110,99,0.3);
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 5% 100px;
+  }
+
+  .page-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .page-subtitle {
+    font-family: var(--font-script);
+    font-size: 2rem;
+    color: var(--deep-rose);
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+  .page-desc {
+    font-size: 0.95rem;
+    color: var(--warm-grey);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: white;
+    border: 1px solid var(--blush);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .field-label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .field-input, .field-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--blush);
+    background: var(--cream);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+  .field-input:focus, .field-select:focus { border-color: var(--rose); }
+  .field-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--blush);
+    background: var(--cream);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    min-height: 110px;
+    resize: vertical;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .field-textarea:focus { border-color: var(--rose); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .submit-btn {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    font-weight: 400;
+  }
+  .submit-btn:hover { background: var(--deep-rose); transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+    margin-right: 0.5rem;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border: 1.5px solid var(--blush);
+    background: transparent;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--warm-grey);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--cream);
+  }
+
+  /* STATS */
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--blush);
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+    margin-top: 3px;
+    display: block;
+  }
+
+  /* IDEAS LIST */
+  .ideas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .idea-card {
+    background: white;
+    border: 1px solid var(--blush);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    position: relative;
+    transition: box-shadow 0.2s;
+    border-left: 3px solid var(--blush);
+  }
+  .idea-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .idea-card.cat-website { border-left-color: var(--deep-rose); }
+  .idea-card.cat-events { border-left-color: var(--gold); }
+  .idea-card.cat-marketing { border-left-color: #7c9e87; }
+  .idea-card.cat-services { border-left-color: #7a8fa6; }
+  .idea-card.cat-other { border-left-color: var(--warm-grey); }
+
+  .idea-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .idea-author {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--deep-rose);
+    letter-spacing: 0.05em;
+  }
+  .idea-time {
+    font-size: 0.72rem;
+    color: var(--warm-grey);
+  }
+  .idea-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .cat-badge-website { background: rgba(158,110,99,0.12); color: var(--deep-rose); }
+  .cat-badge-events { background: rgba(200,168,75,0.15); color: #9a7a20; }
+  .cat-badge-marketing { background: rgba(124,158,135,0.15); color: #4a7a5a; }
+  .cat-badge-services { background: rgba(122,143,166,0.15); color: #4a6a8a; }
+  .cat-badge-other { background: rgba(122,111,105,0.12); color: var(--warm-grey); }
+
+  .idea-text {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .idea-delete {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--blush);
+    cursor: pointer;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    font-family: var(--font-body);
+  }
+  .idea-delete:hover { color: var(--deep-rose); }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--warm-grey);
+  }
+  .empty-state .empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+  }
+  .empty-state p {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--warm-grey);
+  }
+
+  /* LOADING */
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--warm-grey);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 12px 24px;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 600px) {
+    .page-title { font-size: 2.2rem; }
+    .field-row { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+    .stats-row { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a class="back-link" href="/">← Back to the website</a>
+  <a class="brand" href="/">The Breath Therapy</a>
+  <span class="private-badge">🔒 Private</span>
+</div>
+
+<div class="main">
+  <span class="page-eyebrow">For Taylor & Phil only</span>
+  <h1 class="page-title">The Breath Therapy</h1>
+  <span class="page-subtitle">Ideas Board</span>
+  <p class="page-desc">A running list for Taylor & Phil — website changes, new events, marketing ideas, services to add, anything worth capturing. Saves automatically and stays here for both of you.</p>
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="field-row">
+      <div>
+        <label class="field-label">Your name</label>
+        <select class="field-select" id="authorSelect">
+          <option value="">Select name...</option>
+          <option value="Taylor">Taylor</option>
+          <option value="Phil">Phil</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Category</label>
+        <select class="field-select" id="categorySelect">
+          <option value="website">Website</option>
+          <option value="events">Events</option>
+          <option value="marketing">Marketing</option>
+          <option value="services">Services</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+    <label class="field-label">Idea</label>
+    <textarea class="field-textarea" id="ideaText" placeholder="Type your idea here..."></textarea>
+    <button class="submit-btn" onclick="addIdea()">Add Idea →</button>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row" id="statsRow" style="display:none;">
+    <div class="stat">
+      <span class="stat-num" id="totalCount">0</span>
+      <span class="stat-label">Total Ideas</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="taylorCount">0</span>
+      <span class="stat-label">From Taylor</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="philCount">0</span>
+      <span class="stat-label">From Phil</span>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar" id="filterBar" style="display:none;">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterIdeas('all', this)">All</button>
+    <button class="filter-btn" onclick="filterIdeas('website', this)">Website</button>
+    <button class="filter-btn" onclick="filterIdeas('events', this)">Events</button>
+    <button class="filter-btn" onclick="filterIdeas('marketing', this)">Marketing</button>
+    <button class="filter-btn" onclick="filterIdeas('services', this)">Services</button>
+    <button class="filter-btn" onclick="filterIdeas('other', this)">Other</button>
+  </div>
+
+  <!-- IDEAS LIST -->
+  <div class="ideas-list" id="ideasList">
+    <div class="loading">Loading ideas...</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  const STORAGE_KEY = 'tbt-ideas-v1';
+  let allIdeas = [];
+  let currentFilter = 'all';
+
+  // Time ago helper
+  function timeAgo(ts) {
+    const diff = Date.now() - ts;
+    const mins = Math.floor(diff / 60000);
+    const hours = Math.floor(diff / 3600000);
+    const days = Math.floor(diff / 86400000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + 'm ago';
+    if (hours < 24) return hours + 'h ago';
+    if (days === 1) return 'yesterday';
+    return days + ' days ago';
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  function catLabel(cat) {
+    const labels = { website: 'Website', events: 'Events', marketing: 'Marketing', services: 'Services', other: 'Other' };
+    return labels[cat] || cat;
+  }
+
+  function renderIdeas() {
+    const list = document.getElementById('ideasList');
+    const filtered = currentFilter === 'all' ? allIdeas : allIdeas.filter(i => i.category === currentFilter);
+
+    // Update stats
+    const total = allIdeas.length;
+    const taylorCount = allIdeas.filter(i => i.author === 'Taylor').length;
+    const philCount = allIdeas.filter(i => i.author === 'Phil').length;
+    document.getElementById('totalCount').textContent = total;
+    document.getElementById('taylorCount').textContent = taylorCount;
+    document.getElementById('philCount').textContent = philCount;
+
+    if (total > 0) {
+      document.getElementById('statsRow').style.display = 'flex';
+      document.getElementById('filterBar').style.display = 'flex';
+    }
+
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="empty-state"><span class="empty-icon">✨</span><p>${currentFilter === 'all' ? 'No ideas yet — add the first one above!' : 'No ideas in this category yet.'}</p></div>`;
+      return;
+    }
+
+    list.innerHTML = filtered.slice().reverse().map(idea => `
+      <div class="idea-card cat-${idea.category}" id="card-${idea.id}">
+        <div class="idea-meta">
+          <span class="idea-author">${idea.author}</span>
+          <span class="idea-time">· ${timeAgo(idea.timestamp)}</span>
+          <span class="idea-category cat-badge-${idea.category}">${catLabel(idea.category)}</span>
+        </div>
+        <p class="idea-text">${idea.text.replace(/\n/g, '<br>')}</p>
+        <button class="idea-delete" onclick="deleteIdea('${idea.id}')">Delete</button>
+      </div>
+    `).join('');
+  }
+
+  async function loadIdeas() {
+    try {
+      const result = await window.storage.get(STORAGE_KEY, true);
+      allIdeas = result ? JSON.parse(result.value) : [];
+    } catch {
+      allIdeas = [];
+    }
+    renderIdeas();
+  }
+
+  async function saveIdeas() {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(allIdeas), true);
+  }
+
+  async function addIdea() {
+    const author = document.getElementById('authorSelect').value;
+    const text = document.getElementById('ideaText').value.trim();
+    const category = document.getElementById('categorySelect').value;
+
+    if (!author) { showToast('Please select your name first'); return; }
+    if (!text) { showToast('Please type an idea first'); return; }
+
+    const btn = document.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    const idea = {
+      id: Date.now().toString(),
+      author,
+      text,
+      category,
+      timestamp: Date.now()
+    };
+
+    allIdeas.push(idea);
+    await saveIdeas();
+    document.getElementById('ideaText').value = '';
+    renderIdeas();
+    showToast('✓ Idea saved!');
+
+    btn.disabled = false;
+    btn.textContent = 'Add Idea →';
+  }
+
+  async function deleteIdea(id) {
+    if (!confirm('Delete this idea?')) return;
+    allIdeas = allIdeas.filter(i => i.id !== id);
+    await saveIdeas();
+    renderIdeas();
+    showToast('Idea deleted');
+  }
+
+  function filterIdeas(cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderIdeas();
+  }
+
+  // Allow Cmd+Enter / Ctrl+Enter to submit
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') addIdea();
+  });
+
+  loadIdeas();
+
+  // Refresh timestamps every minute
+  setInterval(() => { if (allIdeas.length > 0) renderIdeas(); }, 60000);
+</script>
+
+</body>
+</html>
