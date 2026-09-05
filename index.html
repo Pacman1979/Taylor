@@ -695,6 +695,21 @@
   }
   .event-row:last-child { border-bottom: none; }
   .event-row:hover { background: var(--blush); }
+  .form-status {
+    display: none;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 0.9rem 1.1rem;
+    border-radius: 4px;
+  }
+  .form-status.is-visible { display: block; }
+  .form-status.is-error {
+    background: #fdf1ee;
+    border-left: 3px solid var(--deep-rose);
+    color: var(--charcoal);
+  }
+  .form-status a { color: var(--deep-rose); font-weight: 500; }
   .event-date {
     text-align: center;
     min-width: 60px;
@@ -1126,7 +1141,7 @@
   <div class="services-grid">
     <div class="service-card">
       <span class="service-num">01</span>
-      <h3>Breathwork Release Session</h3>
+      <h3>BREATHE at The Move Room</h3>
       <span class="service-price">From $39 per person · Gold Coast</span>
       <p>A deep, transformative 90-minute breathwork session at The Move Room, Currumbin. Guided breath patterns designed to release stored tension, calm the nervous system, and create profound emotional release. Bolsters, eye masks &amp; a safe, held environment provided. Limited spots — and they sell out fast.</p>
       <a href="https://luma.com/breathemove" target="_blank" class="service-link">Book Now →</a>
@@ -1306,21 +1321,24 @@
   <p class="section-eyebrow">Get in Touch</p>
   <h2 class="section-title">Ready to Begin? <em>Let's Talk.</em></h2>
   <p class="section-body">Not sure which session is right for you? Send Taylor a message and she'll point you in the right direction. First-timers are always welcome.</p>
-  <form class="contact-form" onsubmit="handleContact(event)">
+  <form class="contact-form" id="contactForm" onsubmit="handleContact(event)">
     <div class="form-row">
-      <input type="text" placeholder="First Name" required>
-      <input type="text" placeholder="Last Name">
+      <input type="text" name="firstName" placeholder="First Name" required>
+      <input type="text" name="lastName" placeholder="Last Name">
     </div>
-    <input type="email" placeholder="Email Address" required>
-    <select>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+           style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <select name="session">
       <option value="" disabled selected>Which session interests you?</option>
-      <option>Breathwork Release Session (Gold Coast)</option>
+      <option>BREATHE at The Move Room (Gold Coast)</option>
       <option>Rise & Flow — Beach (Gold Coast)</option>
       <option>Melbourne Pop-Up</option>
       <option>Not sure — just want to chat</option>
     </select>
-    <textarea placeholder="Tell Taylor a little about what's brought you here..."></textarea>
+    <textarea name="message" placeholder="Tell Taylor a little about what's brought you here..."></textarea>
     <button type="submit">Send My Message →</button>
+    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     <p class="contact-note">🔒 Your message goes directly to Taylor. She'll personally respond within 24 hours.</p>
   </form>
 </section>
@@ -1335,7 +1353,7 @@
     <div class="footer-col">
       <h4>Sessions</h4>
       <ul>
-        <li><a href="#services">Breathwork Release</a></li>
+        <li><a href="#services">BREATHE</a></li>
         <li><a href="#services">Rise &amp; Flow Beach</a></li>
         <li><a href="#services">Melbourne Pop-Ups</a></li>
       </ul>
@@ -1357,12 +1375,48 @@
 </footer>
 
 <script>
-  function handleContact(e) {
+  async function handleContact(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Message Sent — Taylor will be in touch!';
-    btn.style.background = 'var(--deep-rose)';
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const status = document.getElementById('formStatus');
+    const original = btn.textContent;
+
+    status.className = 'form-status';
+    status.innerHTML = '';
     btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json().catch(() => ({}));
+
+      if (res.ok && result.ok) {
+        // Only claim success once the send has actually succeeded.
+        btn.textContent = '✓ Message Sent — Taylor will be in touch!';
+        btn.style.background = 'var(--deep-rose)';
+        form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+        return;
+      }
+      throw new Error(result.error || 'Send failed');
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = original;
+      status.className = 'form-status is-visible is-error';
+      status.innerHTML =
+        'Sorry — your message could not be sent just now. ' +
+        'Please email Taylor directly at ' +
+        '<a href="mailto:taylor@thebreaththerapy.com.au">taylor@thebreaththerapy.com.au</a> ' +
+        'or reach her on Instagram ' +
+        '<a href="https://www.instagram.com/thebreaththerapy_/" target="_blank">@thebreaththerapy_</a>.';
+    }
   }
 
   // Smooth reveal on scroll
