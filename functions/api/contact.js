@@ -9,15 +9,19 @@
  * honestly, with Taylor's address as a fallback. We never show a tick we
  * haven't earned.
  *
- * Email sender is auto-detected, so this file works unchanged whichever
- * you set up:
- *   - env.EMAIL / env.SEND_EMAIL  → Cloudflare Email Service binding (preferred)
- *   - env.RESEND_API_KEY          → Resend HTTP API (fallback)
+ * Sender is auto-detected in priority order, so this file works unchanged:
+ *   1. CF_ACCOUNT_ID + CF_EMAIL_TOKEN  -> Cloudflare Email Service REST API
+ *   2. env.EMAIL / env.SEND_EMAIL      -> Cloudflare Workers binding (if ever migrated)
+ *   3. RESEND_API_KEY                  -> Resend HTTP API
+ *
+ * NOTE: this repo is public. Never hardcode secrets or personal addresses
+ * here. Set them as encrypted secrets under
+ * Workers & Pages -> taylor -> Settings -> Variables and Secrets.
  */
 
-const TO_ADDRESS = 'taylor@thebreaththerapy.com.au';
 const FROM_ADDRESS = 'website@thebreaththerapy.com.au';
 const FROM_NAME = 'The Breath Therapy Website';
+const FALLBACK_TO = 'taylor@thebreaththerapy.com.au';
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -53,7 +57,7 @@ export async function onRequest(context) {
     return json({ ok: false, error: 'Invalid request' }, 400);
   }
 
-  // Honeypot — real people never fill this in, bots usually do.
+  // Honeypot -- real people never fill this in, bots usually do.
   if (body.website) return json({ ok: true });
 
   const firstName = (body.firstName || '').trim().slice(0, 100);
@@ -84,8 +88,10 @@ export async function onRequest(context) {
     console.error('KV save failed:', err.message);
   }
 
-  // ---- 2. Try to email Taylor ----
+  // ---- 2. Build the notification ----
+  const toAddress = env.CONTACT_TO || FALLBACK_TO;
   const subject = `New website enquiry from ${fullName}`;
+
   const text =
     `New enquiry from thebreaththerapy.com.au\n\n` +
     `Name:     ${fullName}\n` +
@@ -106,26 +112,53 @@ export async function onRequest(context) {
       <p style="margin-top:1.5rem;color:#8a817c;font-size:.9rem">Just hit reply to respond to ${esc(firstName)} directly.</p>
     </div>`;
 
+  // ---- 3. Send ----
   let sent = false;
-  let sendError = null;
 
   try {
-    const emailBinding = env.EMAIL || env.SEND_EMAIL;
+    if (env.CF_ACCOUNT_ID && env.CF_EMAIL_TOKEN) {
+      // Cloudflare Email Service REST API -- no Workers binding required.
+      const res = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/email/sending/send`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.CF_EMAIL_TOKEN}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: `${FROM_NAME} <${FROM_ADDRESS}>`,
+            to: toAddress,
+            reply_to: email,   // REST uses reply_to; the Workers binding uses replyTo
+            subject,
+            text,
+            html,
+          }),
+        }
+      );
 
-    if (emailBinding && typeof emailBinding.send === 'function') {
-      // Cloudflare Email Service — no API key needed
-      await emailBinding.send({
+      // The Cloudflare API can return HTTP 200 with success:false, so check both.
+      const payload = await res.json().catch(() => null);
+      if (!res.ok || !payload || payload.success !== true) {
+        const detail = (payload && payload.errors)
+          ? payload.errors.map(e => `${e.code}: ${e.message}`).join('; ')
+          : `HTTP ${res.status}`;
+        throw new Error(`Cloudflare send failed -- ${detail}`);
+      }
+      sent = true;
+
+    } else if (env.EMAIL && typeof env.EMAIL.send === 'function') {
+      // Workers binding, if this ever moves off Pages.
+      await env.EMAIL.send({
         from: `${FROM_NAME} <${FROM_ADDRESS}>`,
-        to: TO_ADDRESS,
+        to: toAddress,
         replyTo: email,
-        subject,
-        text,
-        html,
+        subject, text, html,
       });
       sent = true;
 
     } else if (env.RESEND_API_KEY) {
-      // Resend fallback
+      // Resend fallback.
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -134,11 +167,9 @@ export async function onRequest(context) {
         },
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_ADDRESS}>`,
-          to: [TO_ADDRESS],
+          to: [toAddress],
           reply_to: email,
-          subject,
-          text,
-          html,
+          subject, text, html,
         }),
       });
       if (!res.ok) throw new Error(`Resend returned ${res.status}: ${await res.text()}`);
@@ -148,12 +179,11 @@ export async function onRequest(context) {
       throw new Error('No email sender configured');
     }
   } catch (err) {
-    sendError = err.message;
-    console.error('Email send failed:', sendError);
+    console.error('Email send failed:', err.message);
   }
 
   if (sent) return json({ ok: true });
 
-  // Honest failure — the visitor is told, and we still have their enquiry.
+  // Honest failure -- the visitor is told, and we still have their enquiry.
   return json({ ok: false, saved, error: 'Could not send message' }, 502);
 }
