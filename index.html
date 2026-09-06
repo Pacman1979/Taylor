@@ -709,6 +709,11 @@
     border-left: 3px solid var(--deep-rose);
     color: var(--charcoal);
   }
+  .form-status.is-success {
+    background: #f3f6f1;
+    border-left: 3px solid #7a9070;
+    color: var(--charcoal);
+  }
   .form-status a { color: var(--deep-rose); font-weight: 500; }
   .event-date {
     text-align: center;
@@ -1399,9 +1404,18 @@
 
       if (res.ok && result.ok) {
         // Only claim success once the send has actually succeeded.
-        btn.textContent = '✓ Message Sent — Taylor will be in touch!';
+        form.reset();
+        status.className = 'form-status is-visible is-success';
+        status.textContent = 'Message sent. Taylor will be in touch within 24 hours.';
+        btn.textContent = '✓ Message Sent';
         btn.style.background = 'var(--deep-rose)';
-        form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+
+        // Hand the form back so they can send another if they need to.
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = original;
+          btn.style.background = '';
+        }, 4000);
         return;
       }
       throw new Error(result.error || 'Send failed');
