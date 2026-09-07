@@ -1,6 +1,6 @@
 const CORS = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
@@ -49,10 +49,49 @@ export async function onRequest(context) {
         author: body.author || 'Unknown',
         category: body.category || 'other',
         text: body.text || '',
+        done: false,
+        completedAt: null,
       };
       ideas.push(newIdea);
       await putIdeas(ideas);
       return json(newIdea, 201);
+    }
+
+    // PATCH — edit the text of an idea, or mark it complete / reopen it
+    if (method === 'PATCH') {
+      const { searchParams } = new URL(request.url);
+      const id = searchParams.get('id');
+      if (!id) return json({ error: 'Missing id' }, 400);
+
+      const body = await request.json();
+      const ideas = await getIdeas();
+      const idx = ideas.findIndex(i => i.id === id);
+      if (idx === -1) return json({ error: 'Not found' }, 404);
+
+      const idea = ideas[idx];
+
+      // Update the wording
+      if (typeof body.text === 'string') {
+        const trimmed = body.text.trim();
+        if (!trimmed) return json({ error: 'Text cannot be empty' }, 400);
+        idea.text = trimmed.slice(0, 5000);
+        idea.editedAt = Date.now();
+      }
+
+      // Update the category
+      if (typeof body.category === 'string' && body.category) {
+        idea.category = body.category;
+      }
+
+      // Toggle completion. Stamp the date on completion, clear it on reopen.
+      if (typeof body.done === 'boolean') {
+        idea.done = body.done;
+        idea.completedAt = body.done ? Date.now() : null;
+      }
+
+      ideas[idx] = idea;
+      await putIdeas(ideas);
+      return json(idea);
     }
 
     // DELETE — remove an idea by id

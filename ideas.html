@@ -297,6 +297,60 @@
     color: var(--charcoal);
     line-height: 1.7;
   }
+  .idea-card.is-done {
+    background: var(--soft-white);
+    border-left-color: #9aa89a;
+    opacity: 0.78;
+  }
+  .idea-card.is-done .idea-text {
+    text-decoration: line-through;
+    text-decoration-color: var(--warm-grey);
+    text-decoration-thickness: 1px;
+    color: var(--warm-grey);
+  }
+  .idea-done-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5f7a5f;
+    background: #eaf0ea;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .idea-actions {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--blush);
+  }
+  .idea-action {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--warm-grey);
+    transition: color 0.15s;
+  }
+  .idea-action:hover { color: var(--deep-rose); }
+  .idea-action.primary { color: var(--deep-rose); font-weight: 500; }
+  .idea-edit-box {
+    width: 100%;
+    min-height: 90px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--rose);
+    border-radius: 3px;
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--charcoal);
+    resize: vertical;
+  }
+  .idea-edit-box:focus { outline: none; border-color: var(--deep-rose); }
   .idea-delete {
     position: absolute;
     top: 1.2rem;
@@ -448,6 +502,7 @@
   const API = '/api/ideas';
   let allIdeas = [];
   let currentFilter = 'all';
+  let editingId = null;
 
   // Time ago helper
   function timeAgo(ts) {
@@ -467,6 +522,20 @@
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // The ideas endpoint is open, so never trust stored text as HTML.
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function doneDate(ts) {
+    if (!ts) return '';
+    return new Date(ts).toLocaleDateString('en-AU', {
+      day: 'numeric', month: 'short', year: 'numeric'
+    });
   }
 
   function catLabel(cat) {
@@ -496,17 +565,52 @@
       return;
     }
 
-    list.innerHTML = filtered.slice().reverse().map(idea => `
-      <div class="idea-card cat-${idea.category}" id="card-${idea.id}">
+    // Open items first (newest first), then completed ones (most recently done first).
+    const sorted = filtered.slice().sort((a, b) => {
+      const aDone = a.done ? 1 : 0;
+      const bDone = b.done ? 1 : 0;
+      if (aDone !== bDone) return aDone - bDone;
+      if (a.done) return (b.completedAt || 0) - (a.completedAt || 0);
+      return b.timestamp - a.timestamp;
+    });
+
+    list.innerHTML = sorted.map(idea => {
+      const cat = esc(idea.category);
+
+      const meta = `
         <div class="idea-meta">
-          <span class="idea-author">${idea.author}</span>
+          <span class="idea-author">${esc(idea.author)}</span>
           <span class="idea-time">· ${timeAgo(idea.timestamp)}</span>
-          <span class="idea-category cat-badge-${idea.category}">${catLabel(idea.category)}</span>
-        </div>
-        <p class="idea-text">${idea.text.replace(/\n/g, '<br>')}</p>
-        <button class="idea-delete" onclick="deleteIdea('${idea.id}')">Delete</button>
-      </div>
-    `).join('');
+          <span class="idea-category cat-badge-${cat}">${esc(catLabel(idea.category))}</span>
+          ${idea.done ? `<span class="idea-done-date">✓ Done ${doneDate(idea.completedAt)}</span>` : ''}
+        </div>`;
+
+      // Editing this one — swap the text for a box and Save / Cancel.
+      if (editingId === idea.id) {
+        return `
+          <div class="idea-card cat-${cat}" id="card-${esc(idea.id)}">
+            ${meta}
+            <textarea class="idea-edit-box" id="edit-${esc(idea.id)}">${esc(idea.text)}</textarea>
+            <div class="idea-actions">
+              <button class="idea-action primary" onclick="saveEdit('${esc(idea.id)}')">Save changes</button>
+              <button class="idea-action" onclick="cancelEdit()">Cancel</button>
+            </div>
+          </div>`;
+      }
+
+      return `
+        <div class="idea-card cat-${cat}${idea.done ? ' is-done' : ''}" id="card-${esc(idea.id)}">
+          ${meta}
+          <p class="idea-text">${esc(idea.text).replace(/\n/g, '<br>')}</p>
+          <div class="idea-actions">
+            <button class="idea-action primary" onclick="toggleDone('${esc(idea.id)}')">
+              ${idea.done ? '↩ Reopen' : '✓ Mark complete'}
+            </button>
+            <button class="idea-action" onclick="startEdit('${esc(idea.id)}')">Edit</button>
+          </div>
+          <button class="idea-delete" onclick="deleteIdea('${esc(idea.id)}')">Delete</button>
+        </div>`;
+    }).join('');
   }
 
   async function loadIdeas() {
@@ -566,6 +670,65 @@
     }
   }
 
+  function startEdit(id) {
+    editingId = id;
+    renderIdeas();
+    const box = document.getElementById('edit-' + id);
+    if (box) { box.focus(); box.setSelectionRange(box.value.length, box.value.length); }
+  }
+
+  function cancelEdit() {
+    editingId = null;
+    renderIdeas();
+  }
+
+  async function saveEdit(id) {
+    const box = document.getElementById('edit-' + id);
+    if (!box) return;
+    const text = box.value.trim();
+    if (!text) { showToast('Idea cannot be empty'); return; }
+
+    const original = allIdeas.find(i => i.id === id);
+    if (original && original.text === text) { cancelEdit(); return; }
+
+    try {
+      const res = await fetch(`${API}?id=${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      if (!res.ok) throw new Error('Failed to save');
+      const updated = await res.json();
+      allIdeas = allIdeas.map(i => (i.id === id ? updated : i));
+      editingId = null;
+      renderIdeas();
+      showToast('✓ Changes saved');
+    } catch {
+      showToast('❌ Could not save — please try again');
+    }
+  }
+
+  async function toggleDone(id) {
+    const idea = allIdeas.find(i => i.id === id);
+    if (!idea) return;
+    const next = !idea.done;
+
+    try {
+      const res = await fetch(`${API}?id=${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ done: next })
+      });
+      if (!res.ok) throw new Error('Failed to update');
+      const updated = await res.json();
+      allIdeas = allIdeas.map(i => (i.id === id ? updated : i));
+      renderIdeas();
+      showToast(next ? '✓ Marked complete' : 'Reopened');
+    } catch {
+      showToast('❌ Could not update — please try again');
+    }
+  }
+
   function filterIdeas(cat, btn) {
     currentFilter = cat;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -581,7 +744,7 @@
   loadIdeas();
 
   // Refresh timestamps every minute
-  setInterval(() => { if (allIdeas.length > 0) renderIdeas(); }, 60000);
+  setInterval(() => { if (allIdeas.length > 0 && !editingId) renderIdeas(); }, 60000);
 </script>
 
 </body>
