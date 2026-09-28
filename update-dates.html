@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Updating Your Class Dates — The Breath Therapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:      #faf7f4;
+    --blush:      #e8d5cc;
+    --rose:       #c9a097;
+    --deep-rose:  #a97f75;
+    --gold:       #c8a84b;
+    --charcoal:   #2c2825;
+    --warm-grey:  #8a817c;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .sheet { max-width: 720px; margin: 0 auto; }
+
+  /* ── Masthead ── */
+  header { padding: 4rem 0 2.5rem; border-bottom: 1px solid var(--blush); }
+  .kicker {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--deep-rose); margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--deep-rose); }
+  .standfirst { margin-top: 1.2rem; color: var(--warm-grey); max-width: 52ch; }
+
+  /* ── Parts ── */
+  .part { margin-top: 3.5rem; }
+  .part-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    font-weight: 300; line-height: 1.2; margin-bottom: 0.4rem;
+  }
+  .part > p.intro { color: var(--warm-grey); margin-bottom: 2rem; max-width: 56ch; }
+
+  /* ── Steps ── */
+  ol.steps { list-style: none; counter-reset: step; }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 1.75rem 3.4rem;
+    border-left: 1px solid var(--blush);
+    margin-left: 1.1rem;
+  }
+  ol.steps > li:last-child { border-left-color: transparent; padding-bottom: 0.5rem; }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute; left: -1.1rem; top: -0.15rem;
+    width: 2.2rem; height: 2.2rem;
+    background: var(--cream);
+    border: 1px solid var(--rose);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.05rem; color: var(--deep-rose);
+  }
+  ol.steps > li strong { font-weight: 500; }
+  ol.steps > li p + p { margin-top: 0.5rem; }
+  .muted { color: var(--warm-grey); font-size: 0.95rem; }
+
+  /* ── Inline emphasis ── */
+  .btn-name {
+    background: var(--blush);
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .type-this {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  a { color: var(--deep-rose); }
+
+  /* ── Code sample ── */
+  .sample {
+    background: #fff;
+    border: 1px solid var(--blush);
+    border-left: 3px solid var(--rose);
+    padding: 1.1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.79rem;
+    line-height: 1.85;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--charcoal);
+  }
+  .sample .chg { background: #fdf3d9; padding: 0.05rem 0.15rem; }
+
+  /* ── Anatomy table ── */
+  .anatomy { width: 100%; border-collapse: collapse; margin-top: 1.2rem; }
+  .anatomy td { padding: 0.6rem 0; border-bottom: 1px solid var(--blush); vertical-align: top; }
+  .anatomy td:first-child {
+    width: 8.5rem; padding-right: 1rem;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.82rem; color: var(--deep-rose);
+  }
+
+  /* ── Rule boxes ── */
+  .rules { margin-top: 1.5rem; }
+  .rule {
+    display: flex; gap: 0.85rem; align-items: flex-start;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--blush);
+  }
+  .rule:last-child { border-bottom: none; }
+  .mark { flex-shrink: 0; width: 1.3rem; font-weight: 500; }
+  .yes .mark { color: #5d7a4f; }
+  .no .mark { color: var(--deep-rose); }
+
+  /* ── Reassurance ── */
+  .safety {
+    margin-top: 3.5rem;
+    background: #fff;
+    border: 1px solid var(--blush);
+    padding: 2rem 2rem 1.8rem;
+  }
+  .safety h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 300; margin-bottom: 0.7rem;
+  }
+  .safety p + p { margin-top: 0.8rem; }
+
+  footer {
+    margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--blush);
+    color: var(--warm-grey); font-size: 0.88rem;
+  }
+
+  @media print {
+    body { background: #fff; font-size: 11pt; padding: 0; }
+    .part, .safety { break-inside: avoid; }
+    .sample { font-size: 8pt; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="kicker">The Breath Therapy</p>
+  <h1>Updating your <em>class dates</em></h1>
+  <p class="standfirst">A short guide to changing the dates that show on your website. You'll do this about once every three months. Takes around five minutes once you've done it the first time.</p>
+  <p class="standfirst" style="margin-top:0.8rem">Classes vanish from the site on their own once the date has passed, so your website never shows an old one — even if you're running late.</p>
+</header>
+
+<!-- ─────────── PART ONE ─────────── -->
+<section class="part">
+  <p class="part-label">Part one · You only do this once</p>
+  <h2>Getting set up</h2>
+  <p class="intro">Your website lives on a site called GitHub. You need a free account there before you can change anything.</p>
+
+  <ol class="steps">
+    <li>
+      <p><strong>Create your free GitHub account.</strong></p>
+      <p>Go to <a href="https://github.com/signup">github.com/signup</a> and enter your email, a password, and a username. Your username can be anything — <span class="type-this">taylorvalentino</span> or <span class="type-this">breaththerapy</span> both work fine.</p>
+      <p class="muted">GitHub will email you a code to type in. Check your junk folder if it doesn't arrive.</p>
+    </li>
+
+    <li>
+      <p><strong>Send Phil your username.</strong></p>
+      <p>Just text it to him. He needs it to give you access to your website.</p>
+    </li>
+
+    <li>
+      <p><strong>Accept the invitation.</strong></p>
+      <p>Phil will send an invite. You'll get an email from GitHub with a green <span class="btn-name">Accept invitation</span> button. Click it.</p>
+      <p class="muted">That's the setup finished. You won't need to do any of this again.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ─────────── PART TWO ─────────── -->
+<section class="part">
+  <p class="part-label">Part two · Every few months</p>
+  <h2>Changing your dates</h2>
+  <p class="intro">Do this whenever you've booked new classes and want them showing on your website.</p>
+
+  <ol class="steps">
+    <li>
+      <p><strong>Open your website's files.</strong></p>
+      <p>Go to <a href="https://github.com/Pacman1979/Taylor">github.com/Pacman1979/Taylor</a> and sign in if it asks.</p>
+    </li>
+
+    <li>
+      <p><strong>Click on <span class="btn-name">index.html</span></strong> in the list of files.</p>
+      <p class="muted">You'll see a big wall of code. Don't worry about any of it — you only need one small part.</p>
+    </li>
+
+    <li>
+      <p><strong>Click the pencil icon ✏️</strong> near the top right of the page.</p>
+      <p>This lets you make changes. Before you click it, you're only looking.</p>
+    </li>
+
+    <li>
+      <p><strong>Find your class list.</strong></p>
+      <p>Hold down <span class="type-this">Ctrl</span> and press <span class="type-this">F</span> — or <span class="type-this">Cmd</span> and <span class="type-this">F</span> on a Mac. A small search box appears. Type:</p>
+      <p style="margin-top:0.6rem"><span class="type-this">TAYLOR START HERE</span></p>
+      <p class="muted">Press Enter and it'll jump straight to your classes.</p>
+    </li>
+
+    <li>
+      <p><strong>Change your dates.</strong></p>
+      <p>You'll see one line for each class. Change only the words <em>between the quote marks</em>, exactly like this:</p>
+      <div class="sample">{ date: "<span class="chg">20 Sep</span>", day: "<span class="chg">Sunday</span>", title: "BREATHE at The Move Room", ...</div>
+      <p>Becomes:</p>
+      <div class="sample">{ date: "<span class="chg">14 Dec</span>", day: "<span class="chg">Sunday</span>", title: "BREATHE at The Move Room", ...</div>
+    </li>
+
+    <li>
+      <p><strong>Save your changes.</strong></p>
+      <p>Click the green <span class="btn-name">Commit changes</span> button at the top right. A box pops up — type something short like <span class="type-this">New class dates</span>, then click the green <span class="btn-name">Commit changes</span> button again.</p>
+      <p class="muted">"Commit" is just GitHub's word for save.</p>
+    </li>
+
+    <li>
+      <p><strong>Check your website.</strong></p>
+      <p>Wait about two minutes, then open <a href="https://thebreaththerapy.com.au">thebreaththerapy.com.au</a> and scroll to Upcoming Sessions. Your new dates should be there.</p>
+      <p class="muted">If you still see the old ones, refresh the page.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ─────────── WHAT EACH BIT MEANS ─────────── -->
+<section class="part">
+  <p class="part-label">Reference</p>
+  <h2>What each bit means</h2>
+  <p class="intro">Each class is one line. Here's what you're looking at.</p>
+
+  <table class="anatomy">
+    <tr><td>date</td><td>Day then short month, like <strong>14 Dec</strong>. Always this way round.</td></tr>
+    <tr><td>day</td><td>The day of the week — Sunday, Saturday, and so on.</td></tr>
+    <tr><td>title</td><td>The name of the class as you want people to read it.</td></tr>
+    <tr><td>where</td><td>The venue and suburb.</td></tr>
+    <tr><td>time</td><td>Start and finish time.</td></tr>
+    <tr><td>price</td><td>What it costs, including the dollar sign.</td></tr>
+    <tr><td>booking</td><td>The Luma link for that exact class. See below.</td></tr>
+  </table>
+</section>
+
+<!-- ─────────── LUMA LINK ─────────── -->
+<section class="part">
+  <p class="part-label">Important</p>
+  <h2>Getting the right booking link</h2>
+  <p class="intro">This is the part worth being careful with. If the link points at an old class, people click it and can't book.</p>
+
+  <ol class="steps">
+    <li><p><strong>Create the class on Luma first</strong>, the way you normally do.</p></li>
+    <li><p><strong>Open that class on Luma</strong> and copy the web address from the top of your browser.</p>
+      <p class="muted">It'll look something like <span class="type-this">luma.com/oms4lkpx</span></p></li>
+    <li><p><strong>Paste it into the booking part of that line</strong>, keeping the quote marks around it.</p></li>
+  </ol>
+</section>
+
+<!-- ─────────── RULES ─────────── -->
+<section class="part">
+  <p class="part-label">Quick rules</p>
+  <h2>Do and don't</h2>
+
+  <div class="rules">
+    <div class="rule yes"><span class="mark">✓</span><span>Change the words <strong>between</strong> the quote marks</span></div>
+    <div class="rule yes"><span class="mark">✓</span><span>Delete a whole line to remove a class from your website</span></div>
+    <div class="rule yes"><span class="mark">✓</span><span>Copy a whole line and change it to add a new class</span></div>
+    <div class="rule yes"><span class="mark">✓</span><span>Leave old classes in the list if you like — they hide themselves once the date passes</span></div>
+    <div class="rule no"><span class="mark">✕</span><span>Don't delete any <strong>" , { }</strong> symbols</span></div>
+    <div class="rule no"><span class="mark">✕</span><span>Don't change anything below the line that says nothing below needs changing</span></div>
+    <div class="rule no"><span class="mark">✕</span><span>Don't worry about the rest of the file — you can't reach it from here</span></div>
+  </div>
+</section>
+
+<!-- ─────────── SAFETY ─────────── -->
+<div class="safety">
+  <h3>If something looks wrong</h3>
+  <p><strong>Text Phil. That's it.</strong> Every change you make is recorded, and he can put your website back exactly as it was in about ten seconds. Nothing you do here is permanent and nothing is unfixable.</p>
+  <p>If your dates disappear from the site, it means there's a small typo somewhere in the list. Your visitors will still see a working booking link while it's sorted, so no one is ever stuck.</p>
+  <p class="muted">And if you'd rather not do this at all, just send Phil your dates like you always have. This is here to give you the option, not to hand you a job.</p>
+</div>
+
+<footer>
+  The Breath Therapy · Taylor Valentino<br>
+  Website by Studio Velox · phil@studiovelox.com · 0422 777 865
+</footer>
+
+</div>
+</body>
+</html>

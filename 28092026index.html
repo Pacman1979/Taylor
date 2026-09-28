@@ -1181,153 +1181,60 @@
   <h2 class="section-title">Book Your Spot —<em> Limited Places Available</em></h2>
   <p class="section-body">Taylor's sessions always sell out. Don't wait until they're gone — secure your spot now.</p>
 
-  <!-- ════════════════════════════════════════════════════════════════
-       TAYLOR START HERE  —  YOUR UPCOMING CLASS DATES
-       ════════════════════════════════════════════════════════════════
-
-       Everything you need to change is in the list below.
-       One line for each class.
-
-         - Only change the words between the " " quote marks
-         - Leave every  "  ,  {  }  symbol exactly where it is
-         - To remove a class, delete its whole line
-         - To add a class, copy a whole line and change the details
-
-       Date must be written like "20 Sep" or "3 Oct" — day first,
-       then the short month.
-
-       Classes disappear from the website by themselves once the date
-       has passed, so old ones left in the list do no harm.
-
-       Nothing here can break the rest of your website, and Phil can
-       undo any change in about ten seconds.
-       ════════════════════════════════════════════════════════════════ -->
-
-  <div class="events-list" id="eventsList"></div>
-
-  <script>
-  const UPCOMING_CLASSES = [
-
-    { date: "20 Sep", day: "Sunday",   title: "BREATHE at The Move Room",                     where: "The Move Room · Currumbin Waters, Gold Coast", time: "10:00am – 11:30am",                      price: "$39", booking: "https://luma.com/oms4lkpx" },
-
-    { date: "3 Oct",  day: "Saturday", title: "Rise & Flow — Pilates & Breath by the Beach",  where: "Burleigh Heads Beach · Gold Coast",            time: "6:00am Mat Pilates + 6:40am Breathwork", price: "$15", booking: "https://luma.com/nk6sgb6k" },
-
-    { date: "18 Oct", day: "Sunday",   title: "BREATHE at The Move Room",                     where: "The Move Room · Currumbin Waters, Gold Coast", time: "10:00am – 11:30am",                      price: "$39", booking: "https://luma.com/02d5yj5a" },
-
-    { date: "15 Nov", day: "Sunday",   title: "BREATHE at The Move Room",                     where: "The Move Room · Currumbin Waters, Gold Coast", time: "10:00am – 11:30am",                      price: "$39", booking: "https://luma.com/zgjz2om0" },
-
-  ];
-  /* ═══ Nothing below this line needs changing ═══════════════════ */
-
-  (function () {
-    var list = document.getElementById('eventsList');
-    if (!list) return;
-
-    var MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-
-    function safe(v) {
-      return String(v == null ? '' : v)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    }
-
-    // Turn "20 Sep" into a real date. Works out the year automatically:
-    // if the date looks well in the past, it must mean next year.
-    // Returns null if it can't be read — those are always shown, so a
-    // typo never silently hides a class.
-    function readDate(text) {
-      var bits = String(text || '').trim().split(/\s+/);
-      if (bits.length < 2) return null;
-
-      var day = parseInt(bits[0], 10);
-      var mon = MONTHS.indexOf(bits[1].slice(0, 3).toLowerCase());
-      if (!day || day < 1 || day > 31 || mon === -1) return null;
-
-      var today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      var when = new Date(today.getFullYear(), mon, day);
-      if ((today - when) / 86400000 > 180) {
-        when = new Date(today.getFullYear() + 1, mon, day);
-      }
-      return { when: when, past: when < today };
-    }
-
-    try {
-      if (!Array.isArray(UPCOMING_CLASSES)) throw new Error('Class list unreadable');
-
-      var upcoming = UPCOMING_CLASSES
-        .map(function (c) {
-          var d = readDate(c.date);
-          return { c: c, when: d ? d.when : null, past: d ? d.past : false };
-        })
-        .filter(function (x) { return !x.past; })
-        .sort(function (a, b) {
-          if (!a.when || !b.when) return 0;
-          return a.when - b.when;
-        });
-
-      if (upcoming.length === 0) throw new Error('No upcoming classes');
-
-      list.innerHTML = upcoming.map(function (x) {
-        var c     = x.c;
-        var bits  = String(c.date || '').trim().split(/\s+/);
-        var num   = safe(bits[0] || '');
-        var month = safe(bits[1] || '');
-        var link  = /^https?:\/\//i.test(c.booking || '')
-                      ? safe(c.booking)
-                      : 'https://luma.com/breathemove';
-
-        return '<a href="' + link + '" target="_blank" style="text-decoration:none;color:inherit;">'
-             +   '<div class="event-row" style="cursor:pointer;">'
-             +     '<div class="event-date">'
-             +       '<span class="event-date-num">' + num + '</span>'
-             +       '<span class="event-date-month">' + month + '</span>'
-             +     '</div>'
-             +     '<div class="event-info">'
-             +       '<h4>' + safe(c.title) + '</h4>'
-             +       '<p>' + safe(c.day) + ' · ' + safe(c.where) + ' · ' + safe(c.time) + '</p>'
-             +     '</div>'
-             +     '<div class="event-price">' + safe(c.price) + '<span>Per Person</span></div>'
-             +   '</div>'
-             + '</a>';
-      }).join('');
-
-    } catch (err) {
-      // Nothing upcoming, or the list is mistyped. Show a working booking
-      // link rather than an empty gap on the page.
-      list.innerHTML =
-          '<a href="https://luma.com/breathemove" target="_blank" style="text-decoration:none;color:inherit;">'
-        +   '<div class="event-row" style="cursor:pointer;">'
-        +     '<div class="event-info">'
-        +       '<h4>Upcoming Sessions</h4>'
-        +       '<p>See all of Taylor\'s upcoming classes and book your spot →</p>'
-        +     '</div>'
-        +   '</div>'
-        + '</a>';
-      console.error('Class list:', err.message);
-    }
-  })();
-  </script>
-
-  <script>
-  /* Safety net. If the list above has a typo bad enough that the browser
-     can't read it at all, the section would otherwise be blank. This runs
-     separately and puts a working booking link there instead. */
-  window.addEventListener('DOMContentLoaded', function () {
-    var list = document.getElementById('eventsList');
-    if (!list || list.children.length > 0) return;
-    list.innerHTML =
-        '<a href="https://luma.com/breathemove" target="_blank" style="text-decoration:none;color:inherit;">'
-      +   '<div class="event-row" style="cursor:pointer;">'
-      +     '<div class="event-info">'
-      +       '<h4>Upcoming Sessions</h4>'
-      +       '<p>See all of Taylor\'s upcoming classes and book your spot →</p>'
-      +     '</div>'
-      +   '</div>'
-      + '</a>';
-  });
-  </script>
+  <div class="events-list">
+    <a href="https://luma.com/oms4lkpx" target="_blank" style="text-decoration:none;color:inherit;">
+    <div class="event-row" style="cursor:pointer;">
+      <div class="event-date">
+        <span class="event-date-num">20</span>
+        <span class="event-date-month">Sep</span>
+      </div>
+      <div class="event-info">
+        <h4>BREATHE at The Move Room</h4>
+        <p>Sunday · The Move Room · Currumbin Waters, Gold Coast · 10:00am – 11:30am</p>
+      </div>
+      <div class="event-price">$39<span>Per Person</span></div>
+    </div>
+    </a>
+    <a href="https://luma.com/nk6sgb6k" target="_blank" style="text-decoration:none;color:inherit;">
+    <div class="event-row" style="cursor:pointer;">
+      <div class="event-date">
+        <span class="event-date-num">3</span>
+        <span class="event-date-month">Oct</span>
+      </div>
+      <div class="event-info">
+        <h4>Rise &amp; Flow — Pilates &amp; Breath by the Beach</h4>
+        <p>Saturday · Burleigh Heads Beach · Gold Coast · 6:00am Mat Pilates + 6:40am Breathwork</p>
+      </div>
+      <div class="event-price">$15<span>Per Person</span></div>
+    </div>
+    </a>
+    <a href="https://luma.com/02d5yj5a" target="_blank" style="text-decoration:none;color:inherit;">
+    <div class="event-row" style="cursor:pointer;">
+      <div class="event-date">
+        <span class="event-date-num">18</span>
+        <span class="event-date-month">Oct</span>
+      </div>
+      <div class="event-info">
+        <h4>BREATHE at The Move Room</h4>
+        <p>Sunday · The Move Room · Currumbin Waters, Gold Coast · 10:00am – 11:30am</p>
+      </div>
+      <div class="event-price">$39<span>Per Person</span></div>
+    </div>
+    </a>
+    <a href="https://luma.com/zgjz2om0" target="_blank" style="text-decoration:none;color:inherit;">
+    <div class="event-row" style="cursor:pointer;">
+      <div class="event-date">
+        <span class="event-date-num">15</span>
+        <span class="event-date-month">Nov</span>
+      </div>
+      <div class="event-info">
+        <h4>BREATHE at The Move Room</h4>
+        <p>Sunday · The Move Room · Currumbin Waters, Gold Coast · 10:00am – 11:30am</p>
+      </div>
+      <div class="event-price">$39<span>Per Person</span></div>
+    </div>
+    </a>
+  </div>
 
   <div class="events-cta-wrap">
     <a href="https://luma.com/breathemove" target="_blank" class="btn-primary">Book Your Spot →</a>
